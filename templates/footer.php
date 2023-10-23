@@ -11,7 +11,7 @@
                 </h3>
             </div>
             <div class="footer__section-text footer__text-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.
+                Un centro odontológico comprometido con la excelencia en la salud bucal de sus pacientes. Nuestro equipo profesional y la tecnología avanzada garantizan un cuidado excepcional.
             </div>
             <div class="footer__social card">
                 <a class="footer__social-item social-link1">
@@ -53,25 +53,51 @@
                     </ul>
                     <ul class="footer__section-ul footer__section-text">
                         <li>Sobre nosotros</li>
-                        <li>Libro de reclamaciones</li>
+                        <li>Documentación</li>
                         <li>Política de privacidad</li>
                     </ul>
                 </div>
             </section>
-            <section>
-                <p class="footer__section-p">Horario de atención</p>
-                <p class="footer__section-p">Ubicación</p>
-
-            </section>
         </div>
-        <div class="footer__section footer__section-iframe">
+        <div class="footer__section">
 
-            <iframe class="footer__iframe" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100088895893757%26ref%3Dembed_page&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <button class="footer__section-book">
+                <i class="animation"></i>
+                <svg height="30" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#ffffff" d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+                </svg>
+                Libro de reclamaciones
+                <i class="animation"></i>
+            </button>
+
+            <p class="footer__section-p">
+                <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 0l3 2m-3-7v5"/>
+                </svg>
+                Lunes a viernes de 9 am a 3 pm.
+            </p>
+            <p class="footer__section-p">
+                <svg width="30" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#ffffff" d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14c4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2c0 3.32-2.67 7.25-8 11.8c-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z"/>
+                </svg>
+                Cruce entre Jr. León Prado 3000 y Jr. Fray Martín.
+            </p>
+
         </div>
         <section class="footer__credits">
             © Todos Los Derechos Reservados, 2023.
         </section>
     </footer>
 
+    <div class="loader">
+        <div class="loader__figure custom-loader"></div>
+    </div>
+
+    <script>
+        <?php
+        $base_path = __DIR__;
+        include dirname($base_path) . '/public/js/script.js';
+        ?>
+    </script>
 </body>
 </html>
