@@ -158,9 +158,6 @@ include dirname($base_path) . '/templates/main.php';
 </section>
 
 
-<section id="contact">
-
-</section>
 
 <?php
 include dirname($base_path) . '/templates/footer.php';

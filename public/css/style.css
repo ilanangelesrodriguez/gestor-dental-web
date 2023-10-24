@@ -9,7 +9,7 @@ body {
 }
 
 .aboutus {
-    margin: auto;
+    margin: 3em auto;
     padding: 0 10em;
     gap: 2em;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@ body {
 .about__description-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em 2em;
+    gap: 1em;
 }
 
 .about__description-card {
@@ -211,7 +211,7 @@ body {
     position: fixed;
     width: 100vw;
     justify-content: space-between;
-    padding: 0.5em 3em;
+    padding: 0.5em 5em;
     background-color: var(--main-color);
     z-index: 30;
     font-size: 1em;
@@ -314,8 +314,8 @@ body {
     padding-top: 2.8em;
     flex-direction: row;
     justify-content: center;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
     color: white;
     align-items: center;
     gap: 2em;
@@ -326,7 +326,7 @@ body {
     display: flex;
     gap: 1.5em;
     flex-direction: column;
-    width: 45vw;
+    width: 40vw;
 }
 
 .main__description-content {

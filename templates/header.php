@@ -26,7 +26,6 @@
         <a href="#home" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Inicio</a>
         <a href="#service" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Servicios</a>
         <a href="#aboutus" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Sobre Nosotros</a>
-        <a href="#contact" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Contacto</a>
         <a href="" class="header__bar"></a>
         <div class="header__user flex justify-center">
             <a href="" class="header__login flex px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">
