@@ -6,11 +6,11 @@
                 $base_path = __DIR__;
                 include dirname($base_path) . '/templates/icon-dental.php';
                 ?>
-                <h3 class="icon__h3 px-3 py-2 text-black">
+                <h3 class="icon__h3 px-3 py-2 text-black font-semibold">
                     Bernal<span class="icon__span">Dent</span>
                 </h3>
             </div>
-            <div class="footer__section-text footer__text-description">
+            <div class="footer__section-text footer__text-description leading-loose">
                 Un centro odontológico comprometido con la excelencia en la salud bucal de sus pacientes. Nuestro equipo profesional y la tecnología avanzada garantizan un cuidado excepcional.
             </div>
             <div class="footer__social card">
@@ -43,7 +43,7 @@
         </div>
         <div class="footer__section">
             <section>
-                <h2 class="footer__section-h2">Sitios de navegación</h2>
+                <h2 class="footer__section-h2 font-semibold">Sitios de navegación</h2>
 
                 <div class="footer__section-items">
                     <ul class="footer__section-ul footer__section-text">
@@ -61,7 +61,7 @@
         </div>
         <div class="footer__section">
 
-            <button class="footer__section-book">
+            <button class="footer__section-book font-semibold transition delay-150 duration-300 ease-in-out">
                 <i class="animation"></i>
                 <svg height="30" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#ffffff" d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>

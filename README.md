@@ -119,11 +119,8 @@ Indica cómo los demás pueden contribuir a tu proyecto. Esto podría incluir pa
 ## Equipo de Desarrollo
 
 1. Angeles Rodriguez, Ilan Néstor
-
 2. Avalos Chong, Sohell Diego Alessandro
-
 3. Dueñas Blas, Joseph Ali
-
 4. Hurtado Ramos, Ronald Fabrizio
 
 ## Licencia

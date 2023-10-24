@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BernalDent</title>
+    <meta name="theme-color" content="#0373BF">
     <link rel="stylesheet" href="../public/css/output.css">
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
@@ -16,7 +17,7 @@
         $base_path = __DIR__;
         include dirname($base_path) . '/templates/icon-dental.php';
         ?>
-        <h3 class="icon__h3 px-3 py-2 text-black">
+        <h3 class="icon__h3 px-3 py-2 text-black font-semibold">
             Bernal<span class="icon__span">Dent</span>
         </h3>
 
