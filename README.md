@@ -7,19 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<p align="center">
+<img width="200px" src="media/logo-empresa.png">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Gestor Dental Web
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este sistema web ofrece una solución para la administración de clínicas y consultorios médicos. Proporciona herramientas para facilitar la gestión de citas, historiales médicos, facturación y el seguimiento del pacientes. Este proyecto sigue la metodología Gitflow para organizar y gestionar sus ramas en Git.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Laravel
 
@@ -47,18 +42,20 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Contribución
 
-## Code of Conduct
+Indica cómo los demás pueden contribuir a tu proyecto. Esto podría incluir pautas para solicitudes de extracción (pull requests) y problemas (issues).
+[Laravel documentation](https://laravel.com/docs/contributions).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Equipo de Desarrollo
 
-## Security Vulnerabilities
+1. Angeles Rodriguez, Ilan Néstor
+2. Avalos Chong, Sohell Diego Alessandro
+3. Dueñas Blas, Joseph Ali
+4. Hurtado Ramos, Ronald Fabrizio
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Este proyecto está licenciado bajo la [MIT license](https://opensource.org/licenses/MIT).
