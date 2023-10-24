@@ -16,37 +16,72 @@
 Este sistema web ofrece una solución para la administración de clínicas y consultorios médicos. Proporciona herramientas para facilitar la gestión de citas, historiales médicos, facturación y el seguimiento del pacientes. Este proyecto sigue la metodología Gitflow para organizar y gestionar sus ramas en Git.
 
 
-## Learning Laravel
+## Aprendiendo Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Laravel tiene la biblioteca de [documentación](https://laravel.com/docs) y tutoriales en vídeo más extensa y completa de todos los marcos de aplicaciones web modernos, lo que hace que sea muy fácil comenzar con el marco.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
+Si no tienes ganas de leer, [Laracasts](https://laracasts.com) puede ayudarte. Laracasts contiene más de 2000 tutoriales en vídeo sobre una variedad de temas que incluyen Laravel, PHP moderno, pruebas unitarias y JavaScript. Mejore sus habilidades investigando nuestra completa biblioteca de videos.
 
 ## Contribución
 
 Indica cómo los demás pueden contribuir a tu proyecto. Esto podría incluir pautas para solicitudes de extracción (pull requests) y problemas (issues).
 [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Instalación
+
+1. Clona este repositorio:
+
+    ```bash
+    git clone https://github.com/ilanangelesrodriguez/gestor-dental-web.git
+    ```
+
+2. Navega al directorio del proyecto:
+
+    ```bash
+    cd gestor-dental-web
+    ```
+
+
+## Metodología Gitflow
+
+1. **Rama Principal (`main`)**
+
+   La rama `main` es la rama principal y se considera la versión estable de la aplicación en producción.
+
+
+2. **Rama de Desarrollo (`develop`)**
+
+   La rama `develop` es la rama de desarrollo principal. Las nuevas características y mejoras se desarrollan en ramas separadas y se fusionan en `develop` una vez completadas y probadas.
+
+
+3. **Ramas de Funcionalidad (`feature/`)**
+
+   Las ramas de funcionalidad se utilizan para desarrollar nuevas características. Cada nueva característica se trabaja en su propia rama y se fusiona en `develop` al completarse.
+
+    ```bash
+    git checkout develop
+    git pull origin develop
+    git checkout -b feature/nueva-caracteristica
+    # Desarrollo de la nueva característica
+    git add .
+    git commit -m "Implementar nueva característica"
+    git push origin feature/nueva-caracteristica
+    ```
+
+4. **Ramas de Hotfix (`hotfix/`)**
+
+   Las ramas de hotfix se utilizan para corregir problemas críticos en producción. Se crean a partir de `main`, se corrigen y se fusionan nuevamente en `main` y `develop`.
+
+    ```bash
+    git checkout main
+    git pull origin main
+    git checkout -b hotfix/1.0.1
+    # Corrección del problema crítico
+    git add .
+    git commit -m "Corregir problema crítico"
+    git push origin hotfix/1.0.1
+    ```
+
 
 ## Equipo de Desarrollo
 
