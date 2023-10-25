@@ -452,22 +452,47 @@ body {
 .tratamientos__asistencia-cards {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
+    width: 30em;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
 }
 
 .tratamientos__asistencia-card {
-    width: 350px;
     position: relative;
-    padding: 2em;
-    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #FFF7B1 0%, rgba(255, 255, 255, 0) 71.88%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #FFFFFF;
+    padding: 1.8em;
+    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, var(--background-color) 0%, rgba(255, 255, 255, 0) 71.88%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #FFFFFF;
     box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
     border-radius: 23px;
     transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.tratamientos__asistencia-card svg {
+    width: 7em;
+    position: absolute;
+    top: -1.3em;
+    left: -5em;
 }
 
 .tratamientos__asistencia-card:hover {
     transform: scale(1.05);
+}
+
+.tratamientos__asistencia-card-content-title {
+    font-size: medium;
+    font-weight: bold;
+    text-align: left;
+}
+
+.tratamientos__asistencia-card-content-p {
+    font-size: small;
+    text-align: justify;
 }
 
 .tratamientos__asistencia-content {
@@ -523,12 +548,16 @@ body {
 }
 
 .tratamientos__asistencia-img svg{
-    width: 35em;
+    width: 30em;
 }
 
 .tratamientos__main-span {
     color: var(--main-color);
     font-weight: bold;
+}
+
+.tratamientos__main-span-foot {
+    color: #4D5566;
 }
 
 .tratamientos__main-title {
@@ -662,7 +691,7 @@ body {
     .footer {
         display: flex;
         flex-wrap: wrap;
-        padding: 2em;
+        padding: 4em 2.5em;
     }
 
     .footer__credits {
@@ -708,6 +737,9 @@ body {
         display: flex;
         margin: auto;
         width: 20em;
+        background-color: #add8e68c;
+        border-radius: 50%;
+        padding: 1em;
     }
 
     .main__decription-span {
@@ -735,7 +767,7 @@ body {
         position: fixed;
         bottom: 0;
         width: 92vw;
-        background-color: #333;
+        background-color: #add8e68c;
         color: #212121;
         backdrop-filter: blur(16px) saturate(180%);
         -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -765,6 +797,26 @@ body {
     .tratamientos__card {
         width: 35vw;
         padding: 1em;
+    }
+
+    .tratamientos__asistencia-cards {
+        width: 20em;
+    }
+
+    .tratamientos__asistencia-img svg {
+        max-width: 100%;
+        width: 40em;
+    }
+
+    .tratamientos__asistencia-card {
+        padding-left: 3.5em;
+    }
+
+    .tratamientos__asistencia-card svg {
+        width: 7em;
+        position: absolute;
+        top: 0;
+        left: -3em;
     }
 
     .tratamientos__main-h2 {
