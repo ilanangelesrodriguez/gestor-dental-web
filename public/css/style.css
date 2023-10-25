@@ -329,6 +329,10 @@ body {
     width: 40vw;
 }
 
+.main__description-image {
+    display: none;
+}
+
 .main__description-content {
     font-size: small;
 }
@@ -350,6 +354,10 @@ body {
     100% {
         background-position: 100%;
     }
+}
+
+.navbar__footer {
+    display: none;
 }
 
 .footer__social {
@@ -441,6 +449,35 @@ body {
     padding-top: 4em;
 }
 
+.tratamientos__asistencia-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.tratamientos__asistencia-card {
+    width: 350px;
+    position: relative;
+    padding: 2em;
+    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #FFF7B1 0%, rgba(255, 255, 255, 0) 71.88%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #FFFFFF;
+    box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 23px;
+    transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+    cursor: pointer;
+}
+
+.tratamientos__asistencia-card:hover {
+    transform: scale(1.05);
+}
+
+.tratamientos__asistencia-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
 .tratamientos__card {
     text-align: left;
     border-radius: 0.5rem;
@@ -483,6 +520,10 @@ body {
     font-weight: bold;
     width: 35vw;
     margin: auto;
+}
+
+.tratamientos__asistencia-img svg{
+    width: 35em;
 }
 
 .tratamientos__main-span {
@@ -599,6 +640,7 @@ body {
 
     .aboutus {
         padding: 0 4em;
+        flex-wrap: wrap-reverse;
     }
 
     .aboutus__description {
@@ -647,18 +689,69 @@ body {
 
     .main {
         padding-top: 0;
+        padding-right: 2em;
+        padding-left: 2em;
+        background: var(--main-color);
     }
 
     .main__description {
-        width: 70vw;
+        width: auto;
+    }
+
+    .main__description button {
+        margin: auto;
+        height: 3.5em;
+        border-radius: 1.8em;
+    }
+
+    .main__description-image {
+        display: flex;
+        margin: auto;
+        width: 20em;
+    }
+
+    .main__decription-span {
+        margin: auto;
+    }
+
+    .main__decription-span svg {
+        height: 3.5em;
+    }
+
+    .main__decription-span p, .main__description-content {
+        display: none;
     }
 
     .main__description-title {
         font-size: x-large;
+        text-align: center;
     }
 
     .main__image {
         display: none;
+    }
+
+    .navbar__footer {
+        position: fixed;
+        bottom: 0;
+        width: 92vw;
+        background-color: #333;
+        color: #212121;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(155, 178, 224, 0.75);
+        z-index: 20;
+        margin: 1em;
+        border-radius: 2em;
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+        justify-content: space-around;
+    }
+
+    .navbar__footer .svg__path:active {
+        fill: black;
     }
 
     .tratamientos {
@@ -678,5 +771,7 @@ body {
         width: auto;
         font-size: x-large;
     }
+
+
 
 }
