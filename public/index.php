@@ -109,7 +109,7 @@ include dirname($base_path) . '/templates/main.php';
                     </div>
                     <div class="tratamientos__asistencia-card">
                         <?php
-                        include dirname($base_path) . '/media/dentist-2.svg';
+                        include dirname($base_path) . '/media/faq.svg';
                         ?>
                         <div>
                             <h3 class="tratamientos__asistencia-card-content-title">Respuesta rápida</h3>
@@ -118,7 +118,7 @@ include dirname($base_path) . '/templates/main.php';
                     </div>
                     <div class="tratamientos__asistencia-card">
                         <?php
-                        include dirname($base_path) . '/media/dentist-2.svg';
+                        include dirname($base_path) . '/media/protection.svg';
                         ?>
                         <div>
                             <h3 class="tratamientos__asistencia-card-content-title">Medidas de seguridad</h3>

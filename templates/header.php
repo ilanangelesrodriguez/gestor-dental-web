@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BernalDent</title>
     <meta name="theme-color" content="#0373BF">
+    <style>
+        <?php
+        $base_path = __DIR__;
+        include dirname($base_path) . '/public/css/output.css';
+        include dirname($base_path) . '/public/css/style.css';
+        ?>
+    </style>
     <link rel="stylesheet" href="../public/css/output.css">
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
