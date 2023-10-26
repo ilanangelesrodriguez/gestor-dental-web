@@ -47,7 +47,7 @@
         <a href="#aboutus" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Sobre Nosotros</a>
         <a href="" class="header__bar"></a>
         <div class="header__user flex justify-center">
-            <a href="../public/login.php" class="header__login flex px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">
+            <a href="../app/login.php" class="header__login flex px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">
                 <?php
                 $base_path = __DIR__;
                 include dirname($base_path) . '/media/user.svg';
