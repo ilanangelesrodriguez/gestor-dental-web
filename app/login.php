@@ -12,40 +12,48 @@
 
 <div class="div__login">
     <div class="login" id="login">
+        <div class="login__image">
+            <?php
+            $base_path = __DIR__;
+            include dirname($base_path) . '/media/login.svg';
+            ?>
+        </div>
+        <div class="login__div">
+            <?php
+            /**
+             * Sección de inicio de sesión
+             *
+             * Este archivo actúa como el punto de entrada para la funcionalidad de inicio de sesión.
+             * Incluye la inicialización de modelos, controladores y vistas necesarios, y realiza el enrutamiento
+             * según la acción especificada en la URL.
+             *
+             * @author Ilan Nestor Angeles Rodriguez
+             */
 
-        <?php
-        /**
-         * Sección de inicio de sesión
-         *
-         * Este archivo actúa como el punto de entrada para la funcionalidad de inicio de sesión.
-         * Incluye la inicialización de modelos, controladores y vistas necesarios, y realiza el enrutamiento
-         * según la acción especificada en la URL.
-         *
-         * @author Ilan Nestor Angeles Rodriguez
-         */
+            use View\LoginView;
 
-        use View\LoginView;
+            require_once '../app/Model/Login/UsuarioModel.php';
+            require_once '../app/Model/Login/LoginModel.php';
+            require_once '../app/Controller/LoginController.php';
+            require_once '../app/View/LoginView.php';
+            require_once '../app/Model/Login/AuthUser.php';
+            require_once '../app/Model/Login/AuthMedico.php';
+            require_once '../app/Model/Login/AuthPaciente.php';
 
-        require_once '../app/Model/Login/UsuarioModel.php';
-        require_once '../app/Model/Login/LoginModel.php';
-        require_once '../app/Controller/LoginController.php';
-        require_once '../app/View/LoginView.php';
-        require_once '../app/Model/Login/AuthUser.php';
-        require_once '../app/Model/Login/AuthMedico.php';
-        require_once '../app/Model/Login/AuthPaciente.php';
+            use Controller\LoginController;
 
-        use Controller\LoginController;
+            $loginController = new LoginController();
 
-        $loginController = new LoginController();
+            // Llama al método para mostrar el formulario de inicio de sesión
+            $loginController->mostrarFormulario();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['password'], $_POST['user_type'])) {
+                // Llama al método para procesar el formulario de inicio de sesión
+                $loginController->procesarFormulario();
+            }
 
-        // Llama al método para mostrar el formulario de inicio de sesión
-        $loginController->mostrarFormulario();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['password'], $_POST['user_type'])) {
-            // Llama al método para procesar el formulario de inicio de sesión
-            $loginController->procesarFormulario();
-        }
+            ?>
+        </div>
 
-        ?>
     </div>
 </div>
 

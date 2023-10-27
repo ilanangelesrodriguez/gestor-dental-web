@@ -32,9 +32,11 @@ class LoginController
 
             if ($usuarioExistente && $loginModel->verificarCredenciales($usuario, $clave, $authStrategy)) {
                 // Las credenciales son correctas, aquí puedes redirigir al usuario a la página principal
+                echo "<div class='login__message'>";
                 echo "<div class=login__title>Bienvenido {$usuarioExistente->getNombre()}<br><span>Dale click a continuar</span></div>";
 
                 echo '<button class="login__button signout__button">Continuar</button>';
+                echo "</div>";
                 exit;
 
             }else{
