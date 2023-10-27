@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BernalDent</title>
-    <link rel="icon" href="https://seeklogo.com/images/D/dental-healt-circle-logo-3D8E7DE4FF-seeklogo.com.png" type="image/png">
+    <link rel="icon" href="../media/logo-empresa.png" type="image/png">
 
 
     <meta name="theme-color" content="#0373BF">
@@ -56,7 +56,9 @@
             </a>
 
             <button class="w-32 h-10 text-white bg-gradient-to-r from-indigo-500 via-blue-500 to-sky-500 rounded-lg shadow hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
-                Registrarse
+                <a href="../app/registro.php">
+                    Registrarse
+                </a>
             </button>
 
         </div>

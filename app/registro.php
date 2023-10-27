@@ -5,9 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro</title>
+    <title>BernalDent | Registro</title>
+    <link rel="icon" href="../media/logo-empresa.png" type="image/png">
     <link rel="stylesheet" href="../public/css/login.css">
-
 </head>
 <body>
 <div class="registro div__login">
@@ -18,6 +18,7 @@
             $base_path = __DIR__;
             include dirname($base_path) . '/media/register.svg';
             ?>
+            <a href="./login.php" class="login__image-a">¿Ya tienes una cuenta?</a>
         </div>
         <div class="login__div">
             <?php
@@ -44,15 +45,11 @@
             $registroController = new RegistroController();
             $registroView = new RegistroView();
 
-            // Instancia el RegistroController
             $registroController = new \Controller\RegistroController();
 
-            // Comprueba si se ha enviado el formulario
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Llama a la función para registrar el usuario
                 $registroController->registrarUsuario();
             } else {
-                // Llama a la función para mostrar el formulario de registro
                 $registroController->mostrarFormularioRegistro();
             }
 
@@ -64,10 +61,59 @@
 
 
 </div>
+<div class="loader">
+    <div class="loader__figure custom-loader"></div>
+</div>
 </body>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        setTimeout(function() {
+            document.querySelector(".loader").style.display = "none";
+        }, 2000);
+
+    });
     function volver() {
         window.history.back();
+    }
+
+    function mostrarSiguiente() {
+        let primerGrupo = document.getElementsByClassName("primer-grupo");
+        let segundoGrupo = document.getElementsByClassName("segundo-grupo");
+        let botonEnviar = document.getElementById("boton-enviar");
+        var botonAnterior = document.getElementById("boton-anterior");
+
+        for (let i = 0; i < primerGrupo.length; i++) {
+            primerGrupo[i].style.display = "none";
+        }
+
+        for (let i = 0; i < segundoGrupo.length; i++) {
+            segundoGrupo[i].style.display = "flex";
+        }
+
+        botonEnviar.style.display = "inline-block";
+        document.getElementById("boton-next").style.display="none";
+        botonAnterior.style.display = "inline-block";
+
+    }
+
+    function mostrarAnterior() {
+        let primerGrupo = document.getElementsByClassName("primer-grupo");
+        let segundoGrupo = document.getElementsByClassName("segundo-grupo");
+        let botonEnviar = document.getElementById("boton-enviar");
+        let botonAnterior = document.getElementById("boton-anterior");
+
+        for (let i = 0; i < primerGrupo.length; i++) {
+            primerGrupo[i].style.display = "flex";
+        }
+
+        for (let i = 0; i < segundoGrupo.length; i++) {
+            segundoGrupo[i].style.display = "none";
+            document.getElementById("boton-next").style.display="inline-block";
+        }
+
+        botonEnviar.style.display = "none";
+        botonAnterior.style.display = "none";
     }
 </script>
 </html>

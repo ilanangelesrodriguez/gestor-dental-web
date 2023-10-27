@@ -30,24 +30,29 @@ class LoginController
             }
             $usuarioExistente = $loginModel->getUsuario($usuario);
 
-            if ($usuarioExistente && $loginModel->verificarCredenciales($usuario, $clave, $authStrategy)) {
-                // Las credenciales son correctas, aquí puedes redirigir al usuario a la página principal
-                echo "<div class='login__message'>";
-                echo "<div class=login__title>Bienvenido {$usuarioExistente->getNombre()}<br><span>Dale click a continuar</span></div>";
+            if($loginModel->usuarioExiste($usuario)){
+                if ($usuarioExistente && $loginModel->verificarCredenciales($usuario, $clave, $authStrategy)) {
+                    echo "<div class='login__message'>";
+                    echo "<div class=login__title>Bienvenido {$usuarioExistente->getNombre()}<br><span>Dale click a continuar</span></div>";
 
-                echo '<button class="login__button signout__button">Continuar</button>';
-                echo "</div>";
-                exit;
+                    echo '<button class="login__button signout__button">Continuar</button>';
+                    echo '<button style="margin-top: 1em" class="login__button" onclick="volver()">← Volver</button>';
 
-            }else{
-             
-                // Las credenciales son incorrectas, muestra un mensaje de error o vuelve a mostrar el formulario
-                echo "<div class=login__title>Clave incorrecta<br><span>Introduce los datos de prueba para continuar</span></div>";
+                    echo "</div>";
 
-                echo '<button class="login__button" onclick="goBack()">← Volver</button>';
+                }else{
 
-                echo "Credenciales incorrectas. Vuelve a intentarlo.";
+                    echo "<div class=login__title-error>Clave incorrecta<br><span>Introduce los datos de prueba para continuar</span></div>";
+
+                    echo '<button class="login__button" onclick="volver()">← Volver</button>';
+
+                }
+            } else {
+                echo "<div class=login__title-exit>El usuario no existe<br><span>Por favor, elige el nombre de usuario correcto.</span></div>";
+                echo "<p class='login__p'>Introduce un nombre de usuario existente.</p>";
+                echo '<button style="margin:0;" class="login__button signout__button" onclick="volver()">Regresar</button>';
             }
+
         }
     }
 

@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>BernalDent | Login</title>
+    <link rel="icon" href="../media/logo-empresa.png" type="image/png">
     <link rel="stylesheet" href="../public/css/login.css">
 </head>
 <body>
@@ -17,6 +18,7 @@
             $base_path = __DIR__;
             include dirname($base_path) . '/media/login.svg';
             ?>
+            <a href="./registro.php" class="login__image-a">¿No estas registrado?</a>
         </div>
         <div class="login__div">
             <?php
@@ -44,11 +46,10 @@
 
             $loginController = new LoginController();
 
-            // Llama al método para mostrar el formulario de inicio de sesión
-            $loginController->mostrarFormulario();
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['password'], $_POST['user_type'])) {
-                // Llama al método para procesar el formulario de inicio de sesión
                 $loginController->procesarFormulario();
+            }else {
+                $loginController->mostrarFormulario();
             }
 
             ?>
@@ -56,6 +57,23 @@
 
     </div>
 </div>
-
+<div class="loader">
+    <div class="loader__figure custom-loader"></div>
+</div>
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        setTimeout(function() {
+            document.querySelector(".loader").style.display = "none";
+        }, 2000);
+
+    });
+
+    function volver() {
+        window.history.back();
+    }
+</script>
+
 </html>

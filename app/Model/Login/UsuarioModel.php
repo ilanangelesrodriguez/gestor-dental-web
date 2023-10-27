@@ -5,6 +5,7 @@ namespace Model\Login;
 
 class UsuarioModel
 {
+    private $username;
     private $nombre;
     private $clave;
     private $tipo;
