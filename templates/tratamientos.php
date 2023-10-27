@@ -18,7 +18,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Implantes</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Reemplazo duradero de dientes perdidos con tornillos de titanio.
                 </p>
             </div>
             <div class="tratamientos__card">
@@ -27,7 +27,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Limpieza</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Eliminación de placa y sarro para una boca saludable.
                 </p>
             </div>
             <div class="tratamientos__card">
@@ -36,7 +36,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Braces</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Corrección de alineación dental con aparatos ortodónticos.
                 </p>
             </div>
             <div class="tratamientos__card">
@@ -45,7 +45,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Extracción de dientes</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Eliminación de dientes dañados o problemáticos.
                 </p>
             </div>
             <div class="tratamientos__card">
@@ -54,7 +54,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Revisión</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Evaluación periódica de la salud bucal.
                 </p>
             </div>
             <div class="tratamientos__card">
@@ -64,7 +64,7 @@
                 ?>
                 <h4 class="tratamientos__card-title">Cavidades</h4>
                 <p class="tratamientos__card-description">
-                    Rorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Reparación de dientes afectados por caries.
                 </p>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 Sobre la asistencia sanitaria
             </h2>
             <span class="tratamientos__main-span tratamientos__main-span-foot">
-                Forem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+                Cuidado constante para mantener su salud bucal en su mejor estado.
             </span>
         </div>
         <div class="tratamientos__asistencia-content">
@@ -97,7 +97,9 @@
                     ?>
                     <div class="tratamientos__asistencia-card-content">
                         <h3 class="tratamientos__asistencia-card-content-title">Consultoria de calidad</h3>
-                        <p class="tratamientos__asistencia-card-content-p">Rorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="tratamientos__asistencia-card-content-p">
+                            Asesoramiento para garantizar estándares de excelencia.
+                        </p>
                     </div>
                 </div>
                 <div class="tratamientos__asistencia-card">
@@ -106,7 +108,9 @@
                     ?>
                     <div>
                         <h3 class="tratamientos__asistencia-card-content-title">Respuesta rápida</h3>
-                        <p class="tratamientos__asistencia-card-content-p">Rorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="tratamientos__asistencia-card-content-p">
+                            Atención ágil y eficiente a sus necesidades dentales.
+                        </p>
                     </div>
                 </div>
                 <div class="tratamientos__asistencia-card">
@@ -115,7 +119,9 @@
                     ?>
                     <div>
                         <h3 class="tratamientos__asistencia-card-content-title">Medidas de seguridad</h3>
-                        <p class="tratamientos__asistencia-card-content-p">Rorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="tratamientos__asistencia-card-content-p">
+                            Garantizamos un entorno dental seguro y confiable.
+                        </p>
                     </div>
                 </div>
             </div>

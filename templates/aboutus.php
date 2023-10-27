@@ -38,8 +38,8 @@
     <div class="aboutus__description">
         <h2 class="aboutus__description-h2 tratamientos__main-h2">Historia sobre nuestra clínica</h2>
         <p class="aboutus__description-p">
-            Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-            Vorem ipsum dolor sit amet, consectetur adipiscing elit.  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+            Hace 5 años, nuestra clínica dental en Chimbote se fundó con el compromiso de brindar atención de calidad en un ambiente acogedor. Nos hemos convertido en la elección preferida de nuestros pacientes, manteniendo un enfoque constante en la excelencia y la tecnología.
         </p>
         <div class="about__description-cards">
             <div class="about__description-card">

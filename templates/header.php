@@ -5,29 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BernalDent</title>
+    <title>BernalDent | Home</title>
     <link rel="icon" href="../media/logo-empresa.png" type="image/png">
 
 
     <meta name="theme-color" content="#0373BF">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-        :root {
-            --main-color: #0373BF;
-            --background-color: #CBFFFF;
-        }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        <?php
-        $base_path = __DIR__;
-        include dirname($base_path) . '/public/css/output.css';
-        include dirname($base_path) . '/public/css/style.css';
-        ?>
-    </style>
-    <!--<link rel="stylesheet" href="../public/css/output.css">
-    <link rel="stylesheet" href="../public/css/style.css"> -->
+    <link rel="stylesheet" href="../public/css/output.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body id="body">
 <header class="header flex justify-center space-x-10">
