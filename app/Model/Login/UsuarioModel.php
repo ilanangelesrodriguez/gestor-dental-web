@@ -7,26 +7,37 @@ class UsuarioModel
 {
     private $nombre;
     private $clave;
+    private $tipo;
 
-    public function __construct($nombre, $clave)
+    public function __construct($username,$nombre, $clave, $tipo)
     {
+        $this->username=$username;
         $this->nombre = $nombre;
-        $this->clave = password_hash($clave, PASSWORD_DEFAULT);
+        $this->clave = $clave;
+        $this->tipo = $tipo;
     }
 
     public function getNombre()
     {
         return $this->nombre;
     }
-
+    public function getusername()
+    {
+        return $this->username;
+    }
     public function getClave()
     {
         return $this->clave;
     }
 
-    public static function crearUsuario($nombre, $clave)
+    public function getTipo()
     {
-        return new self($nombre, $clave);
+        return $this->tipo;
+    }
+
+    public static function crearUsuario($username,$nombre, $clave, $tipo)
+    {
+        return new self($username,$nombre, $clave, $tipo);
     }
 
 }

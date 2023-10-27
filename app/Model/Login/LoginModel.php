@@ -15,29 +15,37 @@ class LoginModel
 
     private function inicializarUsuarios()
     {
-
-        $this->usuarios['admin'] = UsuarioModel::crearUsuario('Roxana', 'clave1');
-        $this->usuarios['usuario01'] = UsuarioModel::crearUsuario('Ilan', 'ilan');
-        $this->usuarios['usuario02'] = UsuarioModel::crearUsuario('Sohell', 'sohell');
-        $this->usuarios['usuario03'] = UsuarioModel::crearUsuario('Joseph', 'joseph');
-        $this->usuarios['usuario04'] = UsuarioModel::crearUsuario('Ronald', 'ronald');
+        $this->usuarios = [
+            'admin' => UsuarioModel::crearUsuario('admin','Roxana', 'clave1', 'medico'),
+            'usuario01' => UsuarioModel::crearUsuario('usuario01','Ilan', 'ilan', 'paciente'),
+            'usuario02' => UsuarioModel::crearUsuario('usuario02','Sohell', 'sohell', 'paciente'),
+            'usuario03' => UsuarioModel::crearUsuario('usuario03','Joseph', 'joseph', 'paciente'),
+            'usuario04' => UsuarioModel::crearUsuario('usuario04','Ronald', 'ronald', 'paciente'),
+        ];
 
     }
 
-    public function verificarCredenciales($usuario, $clave)
+    public function verificarCredenciales($usuario, $clave, AuthUser $authUser)
     {
 
-        return $usuario->getNombre() === $usuario->getNombre() && password_verify($clave, $usuario->getClave());
+        $usuarios = $this->obtenerUsuarios();
+
+        return $authUser->autenticar($usuario, $clave, $usuarios);
 
     }
 
-    public function registrarUsuario($nombre, $usuario, $password)
+    private function obtenerUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    public function registrarUsuario($nombre, $usuario, $password, $tipo)
     {
         if ($this->usuarioExiste($usuario)) {
             return false;
         }
 
-        $this->usuarios[$usuario] = UsuarioModel::crearUsuario($nombre, $password);
+        $this->usuarios[$usuario] = UsuarioModel::crearUsuario($usuario,$nombre, $password, $tipo);
         return true;
     }
 
@@ -48,6 +56,7 @@ class LoginModel
 
     public function getUsuario($nombre)
     {
+        
         return isset($this->usuarios[$nombre]) ? $this->usuarios[$nombre] : null;
     }
 

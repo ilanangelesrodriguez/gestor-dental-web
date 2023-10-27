@@ -5,14 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registro</title>
+    <link rel="stylesheet" href="../public/css/login.css">
+
 </head>
 <body>
-<div class="registro">
+<div class="registro div__login">
+    <div class="login" id="login">
 
     <?php
     /**
-     * Sección de inicio de sesión
+     * Sección de registro
      *
      * Este archivo actúa como el punto de entrada para la funcionalidad de inicio de sesión.
      * Incluye la inicialización de modelos, controladores y vistas necesarios, y realiza el enrutamiento
@@ -48,6 +51,7 @@
 
 
     ?>
-</div>
+    </div>
+    </div>
 </body>
 </html>
