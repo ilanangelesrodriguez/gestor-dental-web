@@ -25,7 +25,7 @@ class LoginController
             $loginModel = new LoginModel();
             if ($user_type === 'medico') {
                 $authStrategy = new AuthMedico();
-            } else {
+            } else if($user_type === 'paciente'){
                 $authStrategy = new AuthPaciente();
             }
             $usuarioExistente = $loginModel->getUsuario($usuario);
