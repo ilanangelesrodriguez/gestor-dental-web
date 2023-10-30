@@ -21,6 +21,7 @@ class LoginView
             </select>
 
             <button class="login__button" type="submit" onclick="ocultarBoton()">Iniciar Sesión</button>
+
         </form>
 
         <?php

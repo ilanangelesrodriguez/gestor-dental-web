@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BernalDent | Registro</title>
     <link rel="icon" href="../media/logo-empresa.png" type="image/png">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 <div class="registro div__login">
@@ -18,7 +18,6 @@
             $base_path = __DIR__;
             include dirname($base_path) . '/media/register.svg';
             ?>
-            <a href="./login.php" class="login__image-a">¿Ya tienes una cuenta?</a>
         </div>
         <div class="login__div">
             <?php
@@ -55,7 +54,10 @@
 
 
             ?>
+            <a href="login.php" class="login__image-a">¿Ya tienes una cuenta?</a>
+
         </div>
+
 
     </div>
 

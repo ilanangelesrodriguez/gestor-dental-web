@@ -32,7 +32,7 @@
         <a href="#aboutus" class="header__nav-a px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Sobre Nosotros</a>
         <a href="" class="header__bar"></a>
         <div class="header__user flex justify-center">
-            <a href="../app/login.php" class="header__login flex px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">
+            <a href="../public/login.php" class="header__login flex px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">
                 <?php
                 $base_path = __DIR__;
                 include dirname($base_path) . '/media/user.svg';
@@ -41,7 +41,7 @@
             </a>
 
             <button class="w-32 h-10 text-white bg-gradient-to-r from-indigo-500 via-blue-500 to-sky-500 rounded-lg shadow hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-[#7dd3fc] hover:cursor-pointer">
-                <a href="../app/registro.php">
+                <a href="../public/registro.php">
                     Registrarse
                 </a>
             </button>

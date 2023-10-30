@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BernalDent | Login</title>
     <link rel="icon" href="../media/logo-empresa.png" type="image/png">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -18,7 +17,6 @@
             $base_path = __DIR__;
             include dirname($base_path) . '/media/login.svg';
             ?>
-            <a href="./registro.php" class="login__image-a">¿No estas registrado?</a>
         </div>
         <div class="login__div">
             <?php
@@ -29,7 +27,7 @@
              * Incluye la inicialización de modelos, controladores y vistas necesarios, y realiza el enrutamiento
              * según la acción especificada en la URL.
              *
-             * @author Ilan Nestor Angeles Rodriguez
+             * @author Ilan Nestor Angeles Rodriguez, Sohell Alessandro Avalos Chong, Joseph Dueñas Blas, Ronald Hurtado Ramos
              */
 
             use View\LoginView;
@@ -53,6 +51,8 @@
             }
 
             ?>
+            <a href="registro.php" class="login__image-a">¿No estas registrado?</a>
+
         </div>
 
     </div>
