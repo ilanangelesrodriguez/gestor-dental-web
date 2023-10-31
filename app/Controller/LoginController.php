@@ -25,6 +25,7 @@ class LoginController
             $loginModel = new LoginModel();
             $usuarioExistente = $loginModel->getUsuario($usuario);
 
+
             if ($loginModel->usuarioExiste($usuario)) {
                 if ($usuarioExistente) {
                     // Verifica el tipo de usuario
@@ -36,11 +37,21 @@ class LoginController
                     }
 
                     if ($authStrategy && $loginModel->verificarCredenciales($usuario, $clave, $authStrategy)) {
+
+                        $nombreUsuario = $usuarioExistente->getNombre();
+                        $tipoUsuario = $usuarioExistente->getTipo();
+
+                        // Almacenar los datos en un enlace
+                        $enlace = "home.php?nombre=" . urlencode($nombreUsuario) . "&tipo=" . urlencode($tipoUsuario);
+
                         echo "<div class='login__message'>";
                         echo "<div class='login__title'>Bienvenido {$usuarioExistente->getNombre()}<br><span>Dale click a continuar</span></div>";
-                        echo '<button class="login__button signout__button">Continuar</button>';
+                        echo '<a href="'.$enlace.'"> <button class="login__button signout__button">Continuar</button> </a>';
                         echo '<button style="margin-top: 1em" class="login__button" onclick="volver()">← Volver</button>';
                         echo "</div>";
+
+
+
                     } else {
                         echo "<div class='login__title-error'>Clave o tipo de usuario incorrecto<br><span>Introduce los datos de prueba para continuar</span></div>";
                         echo '<button class="login__button" onclick="volver()">← Volver</button>';

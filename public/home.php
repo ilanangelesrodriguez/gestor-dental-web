@@ -1,3 +1,13 @@
+<?php
+
+if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
+    $nombreUsuario = $_GET['nombre'];
+    $tipoUsuario = $_GET['tipo'];
+
+}
+
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -6,7 +16,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BernalDent | Home</title>
     <link rel="icon" href="../media/logo-empresa.png" type="image/png">
-    <link rel="stylesheet" href="./css/home.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        <?php
+
+        if ($tipoUsuario == "medico") {
+            echo '
+            :root {
+                --main-color: #539987;
+                --card-bg-color: rgba(82, 255, 184, 0.70);
+                --second-bg-color: white;
+            }
+            .main__special {
+                display: none;
+            }
+            ';
+        } elseif ($tipoUsuario == "paciente"){
+            echo '
+            :root {
+                --main-color: #0373B0;
+                --card-bg-color: rgba(110, 195, 224, 0.70);
+                --second-bg-color: white;
+            }
+            ';
+        }
+        ?>
+
+
+        <?php
+        $base_path = __DIR__;
+        include dirname($base_path) . '/public/css/home.css';
+        ?>
+    </style>
 </head>
 <body>
 
@@ -26,12 +69,12 @@
         </h3>
     </div>
     <div class="header__div header__right">
-        <div class="header__right-calendar">
+        <!-- <div class="header__right-calendar">
             <?php
             $base_path = __DIR__;
             include dirname($base_path) . '/media/calendar.svg';
             ?>
-        </div>
+        </div> -->
         <div class="header__right-user">
             <svg width="35" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none">
@@ -46,54 +89,95 @@
 </header>
 
 <header id="navbar" class="navbar__footer">
-    <a href="#home">
+    <a class="navbar__footer-a" href="#home">
         <svg width="35" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path class="svg__path" fill="#6b7280" d="M13.45 2.533a2.25 2.25 0 0 0-2.9 0L3.8 8.228a2.25 2.25 0 0 0-.8 1.72v9.305c0 .966.784 1.75 1.75 1.75h3a1.75 1.75 0 0 0 1.75-1.75V15.25c0-.68.542-1.232 1.217-1.25h2.566a1.25 1.25 0 0 1 1.217 1.25v4.003c0 .966.784 1.75 1.75 1.75h3a1.75 1.75 0 0 0 1.75-1.75V9.947a2.25 2.25 0 0 0-.8-1.72l-6.75-5.694Z"/>
         </svg>
     </a>
 
-    <a href="#service">
-        <svg width="35" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path class="svg__path" fill="#6b7280" fill-rule="evenodd" d="M6 1a1.75 1.75 0 0 0-1.75 1.75V4H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.25V2.75A1.75 1.75 0 0 0 10 1H6Zm4.25 3V2.75A.25.25 0 0 0 10 2.5H6a.25.25 0 0 0-.25.25V4h4.5ZM3 5.5h10a.5.5 0 0 1 .5.5v1h-11V6a.5.5 0 0 1 .5-.5Zm-.5 3V13a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8.5H9V10H7V8.5H2.5Z" clip-rule="evenodd"/>
-        </svg>
+    <a class="navbar__footer-a" href="#service">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><g fill="none" stroke="#6b7280" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"/><path d="M9 10a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-2.832 8.849A4 4 0 0 1 10 16h4a4 4 0 0 1 3.834 2.855"/></g></svg>
     </a>
 
-    <a href="#calendar">
+    <a class="navbar__footer-a" href="#calendar">
         <svg width="35" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path class="svg__path" fill="#6b7280" d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/>
             <path class="svg__path" fill="#6b7280" d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"/>
         </svg>
     </a>
 
-    <a href="#aboutus">
-        <svg width="35" height="32" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
-            <path class="svg__path" fill="#6b7280" d="M96 128a128 128 0 1 1 256 0a128 128 0 1 1-256 0zM0 482.3C0 383.8 79.8 304 178.3 304h91.4c98.5 0 178.3 79.8 178.3 178.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM609.3 512H471.4c5.4-9.4 8.6-20.3 8.6-32v-8c0-60.7-27.1-115.2-69.8-151.8c2.4-.1 4.7-.2 7.1-.2h61.4c89.1 0 161.3 72.2 161.3 161.3c0 17-13.8 30.7-30.7 30.7zM432 256c-31 0-59-12.6-79.3-32.9c19.7-26.6 31.3-59.5 31.3-95.1c0-26.8-6.6-52.1-18.3-74.3C384.3 40.1 407.2 32 432 32c61.9 0 112 50.1 112 112s-50.1 112-112 112z"/>
-        </svg>
+    <a class="navbar__footer-a" id="close" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><g fill="#b97474" fill-rule="evenodd" clip-rule="evenodd"><path d="M15.027 7.232a1 1 0 0 1 1.408.128l2.083 2.5a1 1 0 0 1-1.536 1.28l-2.083-2.5a1 1 0 0 1 .128-1.408Z"/><path d="M15.027 13.768a1 1 0 0 1-.129-1.408l2.084-2.5a1 1 0 1 1 1.536 1.28l-2.083 2.5a1 1 0 0 1-1.408.128Z"/><path d="M17.5 10.5a1 1 0 0 1-1 1H10a1 1 0 1 1 0-2h6.5a1 1 0 0 1 1 1ZM3 3.5a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm0 14a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z"/><path d="M13 2.5a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm0 10a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm-9-10a1 1 0 0 1 1 1v14a1 1 0 1 1-2 0v-14a1 1 0 0 1 1-1Z"/></g></svg>
     </a>
+
+    <div id="closeOption" class="navbar__footer-close">
+        <span>¿Estás seguro?</span>
+        <ul>
+            <li class="navbar__footer-close-yes">
+                <a href="login.php">Si</a>
+            </li>
+            <li id="closeOption-no" class="navbar__footer-close-no">
+                <a href="" onclick="ocultarOpciones()">No</a>
+            </li>
+        </ul>
+    </div>
+
 </header>
 
 
 <div id="menu-desplegable" class="header__left-menu header__menu">
     <section class="header__menu-head">
-        <div class="header__greet"><p id="saludo"></p> <p>, Ilan</p></div>
         <a id="header__left-close" class="header__menu-close" href="#">
             <svg width="30" height="30" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#0373bf" d="M2.22 2.22a.749.749 0 0 1 1.06 0L6 4.939L8.72 2.22a.749.749 0 1 1 1.06 1.06L7.061 6L9.78 8.72a.749.749 0 1 1-1.06 1.06L6 7.061L3.28 9.78a.749.749 0 1 1-1.06-1.06L4.939 6L2.22 3.28a.749.749 0 0 1 0-1.06Z"/>
+                <path fill="#fffff" d="M2.22 2.22a.749.749 0 0 1 1.06 0L6 4.939L8.72 2.22a.749.749 0 1 1 1.06 1.06L7.061 6L9.78 8.72a.749.749 0 1 1-1.06 1.06L6 7.061L3.28 9.78a.749.749 0 1 1-1.06-1.06L4.939 6L2.22 3.28a.749.749 0 0 1 0-1.06Z"/>
             </svg>
         </a>
-    </section>
+        <div class="header__greet-menu"><p id="saludo" class="saludo"></p> <p>, <?php echo $nombreUsuario?></p></div>
 
-    <a href="#">Inspección</a>
-    <a href="#">Tratamiento</a>
-    <a href="#">Extirpar</a>
-    <a href="#">Braces</a>
-    <a href="#">Implantar</a>
+    </section>
+    <nav class="header__menu-nav">
+        <a href="#">Inspección</a>
+        <a href="#">Tratamiento</a>
+        <a href="#">Extirpar</a>
+        <a href="#">Braces</a>
+        <a href="#">Implantar</a>
+    </nav>
+
+    <div class="header__menu-signoff">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20">
+            <g fill="#b97474" fill-rule="evenodd" clip-rule="evenodd">
+                <path d="M15.027 7.232a1 1 0 0 1 1.408.128l2.083 2.5a1 1 0 0 1-1.536 1.28l-2.083-2.5a1 1 0 0 1 .128-1.408Z"/>
+                <path d="M15.027 13.768a1 1 0 0 1-.129-1.408l2.084-2.5a1 1 0 1 1 1.536 1.28l-2.083 2.5a1 1 0 0 1-1.408.128Z"/>
+                <path d="M17.5 10.5a1 1 0 0 1-1 1H10a1 1 0 1 1 0-2h6.5a1 1 0 0 1 1 1ZM3 3.5a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm0 14a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z"/>
+                <path d="M13 2.5a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm0 10a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm-9-10a1 1 0 0 1 1 1v14a1 1 0 1 1-2 0v-14a1 1 0 0 1 1-1Z"/>
+            </g>
+        </svg>
+        <a href="login.php">Salir</a>
+    </div>
 
 </div>
 
 
+<div class="header__div-greet">
+
+    <?php
+
+    if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
+        $nombreUsuario = $_GET['nombre'];
+        $tipoUsuario = $_GET['tipo'];
+
+    }
+
+
+
+    ?>
+
+    <div class="header__greet"><p id="saludo"></p> <p>, <?php echo $nombreUsuario?></p></div>
+
+</div>
+
 <div class="section__card">
-    <div class="skewed">
+
         <div class="section__info-cards">
             <div class="section__info-card">
                 <?php
@@ -118,7 +202,8 @@
         </div>
 
         <div class="section__main">
-            <section class="main">
+
+            <section class="main main__procedure">
                 <div class="main__head">
                     <h3 class="main__head-title">
                         Nuestros procedimientos
@@ -194,7 +279,7 @@
                 </div>
             </section>
 
-            <section class="main">
+            <section class="main main__special">
                 <h3 class="main__head-title">
                     Nuestros especialistas
                 </h3>
@@ -218,7 +303,7 @@
                     <div class="main__card-container">
                         <div class="main__card">
                             <div class="main__card-content">
-                                <p>Dra. Roxana Bernal Valencia</p>
+                                <p>Dr. Walter Escalante</p>
                             </div>
                             <div class="main__card-icon">
                                 <svg width="35" height="35" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -236,10 +321,29 @@
 
         </div>
 
+</div>
+
+<section class="section__about">
+    <h3 class="main__head-title">
+        Ubicación
+    </h3>
+    <div class="section__about-div">
+
+        <div class="section__about-map">
+            <iframe class="section__about-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d414.11065147827156!2d-78.56847124207948!3d-9.09046401487184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ab81531233b987%3A0xa1a4c90fdcb8367b!2sFray%20Martin%2C%20Chimbote%2002804!5e0!3m2!1ses-419!2spe!4v1698288060465!5m2!1ses-419!2spe" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="section__about-ubication">
+            <p>Cruce entre Jr. León Prado 3000 y Jr. Fray Martín.</p>
+            <p>Disponibilidad</p>
+            <p>Lunes a viernes</p>
+            <p>Horarios</p>
+            <p>9am a 3pm</p>
+        </div>
 
     </div>
 
-</div>
+</section>
+
 
 
 <div class="loader">
@@ -264,17 +368,19 @@
 
     let fechaYHora = new Date();
     let hora = fechaYHora.getHours();
-    let divSaludo = document.getElementById("saludo");
+    let elementosSaludo = document.querySelectorAll("#saludo");
 
-    let saludo = "";
-    if (hora >= 6 && hora < 12) {
-        saludo = "Buenos días";
-    } else if (hora >= 12 && hora < 18) {
-        saludo = "Buenas tardes";
-    } else {
-        saludo = "Buenas noches";
-    }
-    divSaludo.innerHTML = saludo;
+    elementosSaludo.forEach(function (divSaludo) {
+        let saludo = "";
+        if (hora >= 6 && hora < 12) {
+            saludo = "Buenos días";
+        } else if (hora >= 12 && hora < 18) {
+            saludo = "Buenas tardes";
+        } else {
+            saludo = "Buenas noches";
+        }
+        divSaludo.innerHTML = saludo;
+    });
 
 
 
@@ -304,6 +410,27 @@
     $base_path = __DIR__;
     include dirname($base_path) . '/public/js/navbar.js';
     ?>
+
+    const etiquetaA = document.getElementById("close");
+    const opciones = document.getElementById("closeOption");
+
+    etiquetaA.addEventListener("click", function(event) {
+        event.preventDefault(); // Evita la acción predeterminada del enlace
+
+        if (opciones.style.display === "none") {
+            opciones.style.display = "flex";
+        } else {
+            opciones.style.display = "none";
+        }
+    });
+
+    function ocultarOpciones() {
+        const div = document.getElementById("closeOption");
+        div.style.display = "none";
+    }
+
+
+
 
 </script>
 

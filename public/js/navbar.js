@@ -1,4 +1,4 @@
-const navbarLink = document.querySelectorAll(".navbar__footer a");
+const navbarLink = document.querySelectorAll(".navbar__footer-a");
 
 navbarLink.forEach(link => {
     link.addEventListener("click", function(event) {

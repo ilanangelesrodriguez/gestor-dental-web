@@ -52,6 +52,10 @@ body {
     flex-direction: column;
 }
 
+.login__message a {
+    margin: auto;
+}
+
 .login__title, .login__title-exit, .login__title-ok, .login__title-error {
     font-size: x-large;
     text-align: center;

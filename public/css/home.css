@@ -1,15 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root {
+/*:root {
     --main-color: #0373B0;
-    --card-bg-color: rgba(110, 195, 224, 0.87);
-}
+    --card-bg-color: rgba(110, 195, 224, 0.70);
+    --second-bg-color: white;
+}*/
 
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #0373B0;
+    background-color: var(--main-color);
     position: relative;
+    max-width: 100%;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
 }
 
 .header {
@@ -18,14 +23,14 @@ body {
     align-items: center;
     justify-content: space-between;
     /*margin: 0 1em;*/
-    padding: 0 1vw;
+    padding: 0 3vw;
 
     position: fixed;
     top: 0;
     left: 0;
     max-width: 100%;
-    width: 98vw;
-    background-color: #0373B0;
+    width: 94vw;
+    background-color: var(--main-color);
     z-index: 1000;
 }
 
@@ -35,38 +40,59 @@ body {
     align-items: center;
 }
 
+.header__div-greet {
+    display: none;
+}
+
 .header__icon-h3 {
 
 }
 
 .header__icon-span {
-    color: white;
+    color: var(--second-bg-color);
 }
 
 .header__greet {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: medium;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    color: var(--second-bg-color);
 }
 
 .header__greet p {
     margin: 0;
 }
 
+.header__greet-menu {
+    font-size: medium;
+    display: flex;
+}
+
+.header__greet-menu p {
+    margin: 0;
+}
+
 .header__left-menu {
     display: none;
-    background-color: lightblue;
     width: 20em;
     padding: 1.5em;
     flex-direction: column;
-    border-radius: 2em;
+    border-radius: 1.8em;
     margin: 0.5em;
     position: absolute;
     z-index: 1001;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(93, 139, 226, 0.75);
+
+    background: rgb(255, 255, 255);
+    box-shadow: 0.3em 0.3em 0.7em #00000015;
+    transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: rgb(250, 250, 250) 0.2em solid;
+
+    margin-top: -4.5em;
+    row-gap: 2em;
 }
 
 .header__menu {
@@ -75,13 +101,53 @@ body {
 
 .header__menu-head {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+    column-gap: 2em;
+    font-weight: bold;
+}
+
+.header__menu-head .saludo {
+    color: var(--main-color);
 }
 
 .header__menu-close {
     display: flex;
+}
+
+.header__menu-close:hover svg path {
+    fill: var(--main-color);
+}
+
+.header__menu-nav {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1.5em;
+    row-gap: 3em;
+}
+
+.header__menu-nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.header__menu-signoff {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5em;
+    margin: 0 1.5em;
+}
+
+.header__menu-signoff a {
+    text-decoration: none;
+    font-weight: bold;
+    color: darkred;
+}
+
+.header__menu-signoff svg g {
+    fill: darkred;
 }
 
 .header__right {
@@ -94,7 +160,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: white;
+    background: var(--second-bg-color);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -193,8 +259,8 @@ body {
     justify-content: center;
     text-align: center;
     gap: 10px;
-    background: linear-gradient(-45deg, #29f86b 0%, #6d93d5 100%);
-    color: #e8e8e8;
+    background: linear-gradient(-45deg, var(--main-color) 0%, var(--card-bg-color) 100%);
+    color: var(--second-bg-color);
     padding: 1em;
     line-height: 1.5;
     border-radius: 5px;
@@ -249,8 +315,7 @@ body {
 }
 
 .main__procedure-item:hover {
-    transform: scale(1.05);
-    transition: all 1s ease-in-out;
+    transform: scale(1.01);
 }
 
 .main__procedure-item svg {
@@ -259,34 +324,133 @@ body {
 }
 
 .main__procedure-item {
-    box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
-
     backdrop-filter: blur(7px) saturate(146%);
     -webkit-backdrop-filter: blur(7px) saturate(146%);
-    background-color: rgba(110, 195, 224, 0.31);
+    background-color: var(--card-bg-color);
     border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: all 0.5s ease;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .main__procedure-title {
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
     text-align: center;
     margin: 0;
 }
 
 .main__procedure-description {
-    font-size: small;
+    font-size: medium;
     margin: 0;
     text-align: center;
 }
 
 .navbar__footer {
     display: none;
+    position: relative;
+}
+
+.navbar__footer a {
+    display: flex;
+}
+
+.navbar__footer-close {
+    display: none;
+    position: absolute;
+    top: -5em;
+    right: 0;
+    margin: -2em 0;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+    flex-direction: column;
+}
+
+.navbar__footer-close ul {
+    list-style: none;
+    padding: 1em 0 0 0;
+    margin: auto;
+    display: flex;
+    column-gap: 1em;
+}
+
+.navbar__footer-close ul li {
+    width: 4em;
+    padding: 0.5em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__footer-close-yes {
+    background: linear-gradient(45deg, #00b5ff, #005eff);
+}
+
+.navbar__footer-close-no {
+    background: linear-gradient(45deg, #ee8c97, #ff0026);
+}
+
+.navbar__footer-close-yes a, .navbar__footer-close-no a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+    color: white;
+}
+
+.section__about {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section__about-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.section__about-map {
+    display: flex;
+}
+
+.section__about-map iframe {
+    border-radius: 0.8em;
+    box-shadow: 0.3em 0.3em 0.7em #00000015;
+    transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: rgb(250, 250, 250) 0.2em solid;
+    max-width: 90%;
+    margin: auto;
+}
+
+.section__about-ubication {
+    margin: 1em;
+    background: #e4e3e3da;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.4em;
+    align-items: flex-start;
+    padding: 2em;
+    transition: all 0.5s ease;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.section__about-ubication:hover {
+    background: #f1f1f1;
 }
 
 .section__card {
-    padding-top: 4em;
-    padding-bottom: 10em;
+    margin-top: 5em;
+    margin-bottom: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: var(--second-bg-color);
+    border-radius: 2em;
 }
 
 .section__info-cards {
@@ -332,20 +496,6 @@ body {
     margin: 0 5em;
 }
 
-.skewed {
-    max-width: 100vw;
-    background: white;
-    padding: 2em;
-    margin-top: 3.2em;
-    z-index: 0;
-    transform: skewY(2deg);
-    transform-origin: top right;
-    border-radius: 3em 3em 0 0;
-}
-
-.skewed > div {
-    transform: skewY(-2deg);
-}
 
 
 @media (max-width: 700px) {
@@ -354,10 +504,19 @@ body {
         gap: 0.5em;
     }
 
+    .header {
+        display: none;
+    }
 
+    .header__div-greet {
+        display: flex;
+        justify-content: center;
+        padding-top: 2em;
+    }
 
     .header__left-menu {
-        width: 13em;
+        width: 15em;
+        margin-top: 1em;
     }
 
     .header__right-calendar {
@@ -436,7 +595,7 @@ body {
         border-radius: 50%;
         color: white;
         padding: 0.2em;
-        box-shadow: 0 0 0 10px #88abe0;
+        box-shadow: 0 0 0 6px #88abe0;
     }
 
     .navbar__footer svg .svg__path:active {
@@ -445,13 +604,15 @@ body {
 
     .section__card {
         width: auto;
+        padding-top: 1em;
+        margin-top: 3em;
     }
 
     .section__main {
-        margin: 0 1em;
+        margin: 0 2em;
     }
 
-    .skewed {
-        margin-top: 1.8em;
-    }
+
+
+
 }
