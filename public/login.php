@@ -44,7 +44,7 @@
 
             $loginController = new LoginController();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['password'], $_POST['user_type'])) {
+            if ($_POST) {
                 $loginController->procesarFormulario();
 
             }else {

@@ -23,6 +23,7 @@ class LoginController
             $user_type = $_POST['user_type'];
 
             $loginModel = new LoginModel();
+
             $usuarioExistente = $loginModel->getUsuario($usuario);
 
 
