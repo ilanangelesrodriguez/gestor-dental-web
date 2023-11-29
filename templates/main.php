@@ -13,14 +13,24 @@
             Tu sonrisa es valiosa y cuidar de ella nunca fue tan fácil. Regístrate hoy y olvídate de las preocupaciones. Tu sonrisa merece lo mejor, y estamos aquí para hacerte la vida más sencilla. ¡Únete ahora y descubre la diferencia!
         </p>
 
-        <button class="hover:scale-95 duration-300 relative group cursor-pointer text-sky-50  overflow-hidden h-13 w-64 rounded-md bg-sky-200 p-2 flex justify-center items-center">
+        <div class="main__description-image">
+            <?php
+            $base_path = __DIR__;
+            include dirname($base_path) . '/media/tooth-3.svg';
+            ?>
+        </div>
 
-            <div class="absolute right-32 -top-4  group-hover:top-1 group-hover:right-2 z-10 w-40 h-40 rounded-full group-hover:scale-150 duration-500 bg-sky-900"></div>
-            <div class="absolute right-2 -top-4  group-hover:top-1 group-hover:right-2 z-10 w-32 h-32 rounded-full group-hover:scale-150  duration-500 bg-sky-800"></div>
-            <div class="absolute -right-12 top-4 group-hover:top-1 group-hover:right-2 z-10 w-24 h-24 rounded-full group-hover:scale-150  duration-500 bg-sky-700"></div>
-            <div class="absolute right-20 -top-4 group-hover:top-1 group-hover:right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-500 bg-sky-600"></div>
-            <p class="z-10 font-semibold">Comenzar ahora</p>
-        </button>
+            <a href="../public/login.php">
+                <button id="redirectLogin" class="hover:scale-95 duration-300 relative group cursor-pointer text-sky-50  overflow-hidden h-13 w-64 rounded-md bg-sky-200 p-2 flex justify-center items-center">
+
+                <div class="absolute right-32 -top-4  group-hover:top-1 group-hover:right-1 z-10 w-40 h-40 rounded-full group-hover:scale-150 duration-500 bg-sky-900"></div>
+                <div class="absolute right-2 -top-4  group-hover:top-1 group-hover:right-2 z-10 w-32 h-32 rounded-full group-hover:scale-150  duration-500 bg-sky-800"></div>
+                <div class="absolute -right-12 top-4 group-hover:top-1 group-hover:right-2 z-10 w-24 h-24 rounded-full group-hover:scale-150  duration-500 bg-sky-700"></div>
+                <div class="absolute right-20 -top-4 group-hover:top-1 group-hover:right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-500 bg-sky-600"></div>
+                <p class="z-10 font-semibold">Comenzar ahora</p>
+                </button>
+            </a>
+
 
     </div>
     <div class="main__image">

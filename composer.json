@@ -1,0 +1,15 @@
+{
+    "name": "ilan/gestor-dental-web",
+    "autoload": {
+        "psr-4": {
+            "Ilan\\GestorDentalWeb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilan Nestor Angeles Rodriguez",
+            "email": "ilananagelesrodriguez@gmail.com"
+        }
+    ]
+
+}
