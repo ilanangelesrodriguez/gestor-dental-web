@@ -49,10 +49,13 @@
 
             }else {
                 $loginController->mostrarFormulario();
+                echo '<a href="registro.php" class="login__image-a">¿No estas registrado?</a>';    
+                
             }
 
             ?>
-            <a href="registro.php" class="login__image-a">¿No estas registrado?</a>
+
+            
 
         </div>
 

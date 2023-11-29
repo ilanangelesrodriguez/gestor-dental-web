@@ -30,9 +30,23 @@ class UsuarioModel {
         return $this->id_usuario;
     }
 
-    public function setIdUsuario($id_usuario)
+    public function setIdUsuario($tipo)
     {
-        $this->id_usuario = $id_usuario;
+        
+        $tipo = $tipo;
+        $totalUsuarios = $this->obtenerTotalUsuarios();
+        $numero = $totalUsuarios + 1;
+
+        if ($tipo === 'medico') {
+            $primerDigito = 'M';
+        } elseif ($tipo === 'paciente') {
+            $primerDigito = 'P';
+        } else {
+            return  null;
+        }
+
+        $string = $primerDigito . str_pad($numero, 3, '0', STR_PAD_LEFT);
+        $this->id_usuario = $string;
         $this->setTipo();
     }
 
@@ -79,6 +93,12 @@ class UsuarioModel {
             $this->tipo = 'error';
         }
     }
+    public function obtenerTotalUsuarios() {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM usuario");
+        $stmt->execute();
+        $totalUsuarios = $stmt->fetchColumn();
+        return $totalUsuarios;
+    }
     
     public function obtenerUsuarioPorCorreo($correo) {
         $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE correo = ?");
@@ -113,13 +133,14 @@ class UsuarioModel {
         }
     }
 
-    public function crearUsuario() {
+    public function crearUsuario($tipo) {
         $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE correo = ?");
         $stmt->execute([$this->correo]);
         $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$existingUser) {
             $stmt = $this->pdo->prepare("INSERT INTO usuario (id_usuario, nombres, correo, contra) VALUES (?, ?, ?, ?)");
+            $this->setIdUsuario($tipo);
             $stmt->execute([$this->id_usuario, $this->nombres, $this->correo, $this->contra]);
             echo "El usuario con correo $this->correo ha sido creado.<br>";
             echo '<button class="home__form-button" id="quitarQueryBtn">Volver</button>';

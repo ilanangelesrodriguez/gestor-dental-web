@@ -57,13 +57,13 @@ class LoginModel
         return $this->usuarios;
     } */
 
-    public function registrarUsuario($nombre, $usuario, $password, $tipo)
+    public function registrarUsuario($nombre, $usuario, $password,$tipo)
     {
         $this->usuario->setIdUsuario($usuario);
         $this->usuario->setNombre($nombre);
         $this->usuario->setCorreo($usuario);
         $this->usuario->setContra($password);
-        $this->usuario->crearUsuario();
+        $this->usuario->crearUsuario($tipo);
     }
 
     public function getUsuario($correo)
