@@ -33,3 +33,4 @@ class MedicoModel extends UsuarioModel{
         return new self($username,$nombre, $clave, $especialidad,$disponibilidad,$foto);
     }
 }
+?>

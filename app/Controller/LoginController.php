@@ -2,38 +2,50 @@
 
 namespace Controller;
 
+require_once __DIR__ .'/../Model/Login/UsuarioModel.php';
+
+require_once __DIR__ .'/../Model/Login/LoginModel.php';
+
 use Model\Login\AuthMedico;
 use Model\Login\AuthPaciente;
-use Model\Login\LoginModel;
-use View\LoginView;
 
+use Model\Login\LoginModel;
+
+use View\LoginView;
+use PDOException;
 class LoginController
 {
     public function mostrarFormulario()
     {
         $loginView = new LoginView();
+        
         $loginView->mostrarFormulario();
+        
     }
 
     public function procesarFormulario()
     {
-        if ($_POST) {
+        
+        
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            
             $usuario = $_POST['email'];
             $clave = $_POST['password'];
-            $user_type = $_POST['user_type'];
-
+            
+            
             $loginModel = new LoginModel();
+            
 
             $usuarioExistente = $loginModel->getUsuario($usuario);
-
+            
 
             if ($loginModel->usuarioExiste($usuario)) {
                 if ($usuarioExistente) {
                     // Verifica el tipo de usuario
                     $authStrategy = null;
-                    if ($user_type === 'medico' && $usuarioExistente->getTipo() === 'medico') {
+                    if ( $usuarioExistente->getTipo() === 'medico') {
                         $authStrategy = new AuthMedico();
-                    } else if ($user_type === 'paciente' && $usuarioExistente->getTipo() === 'paciente') {
+                    } else if ($usuarioExistente->getTipo() === 'paciente') {
                         $authStrategy = new AuthPaciente();
                     }
 
@@ -71,3 +83,4 @@ class LoginController
         }
     }
 }
+?>

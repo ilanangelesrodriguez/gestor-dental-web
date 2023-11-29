@@ -2,6 +2,8 @@
 
 namespace Model\Login;
 
+use Model\Login\UsuarioModel;
 interface AuthUser {
-    public function autenticar($username, $password, $usuarios);
+    public function autenticar($correo, $password, UsuarioModel $usuario): bool;
 }
+?>

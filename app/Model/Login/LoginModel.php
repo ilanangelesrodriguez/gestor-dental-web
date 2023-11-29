@@ -2,18 +2,34 @@
 
 namespace Model\Login;
 
-require_once 'UsuarioModel.php';
+require_once __DIR__ . '/UsuarioModel.php';
+use Model\Login\UsuarioModel;
+
+require_once __DIR__ .'/AuthUser.php';
+use Model\Login\AuthUser;
+require_once __DIR__.'/../../DataBase/conexion.php';
+use DataBase\Conexion;
+use PDOException;
+
 
 class LoginModel
 {
-    private $usuarios;
-
-    public function __construct()
-    {
-        $this->inicializarUsuarios();
+    private $usuario;
+    
+    public function __construct(){
+        
+        try {
+            $conexion = new Conexion();
+        
+            $this->usuario = new UsuarioModel($conexion->conectar());
+        } catch (PDOException $e) {
+            // Manejar el error de conexión
+            die("Error de conexión a la base de datos: " . $e->getMessage());
+        }
     }
+    
 
-    private function inicializarUsuarios()
+    /*  private function inicializarUsuarios()
     {
         $this->usuarios = [
             'admin' => UsuarioModel::crearUsuario('admin','Roxana', 'clave1', 'medico'),
@@ -24,40 +40,42 @@ class LoginModel
         ];
 
     }
-
+ */
     public function verificarCredenciales($usuario, $clave, AuthUser $authUser)
     {
-
-        $usuarios = $this->obtenerUsuarios();
-
-        return $authUser->autenticar($usuario, $clave, $usuarios);
-
+        
+        $this->usuario->obtenerUsuarioPorCorreo($usuario);
+        
+        $autenticado=$authUser->autenticar($usuario, $clave, $this->usuario);
+        
+        
+        return $autenticado;
     }
-
+/* 
     private function obtenerUsuarios()
     {
         return $this->usuarios;
-    }
+    } */
 
     public function registrarUsuario($nombre, $usuario, $password, $tipo)
     {
-        if ($this->usuarioExiste($usuario)) {
-            return false;
-        }
+        $this->usuario->setIdUsuario($usuario);
+        $this->usuario->setNombre($nombre);
+        $this->usuario->setCorreo($usuario);
+        $this->usuario->setContra($password);
+        $this->usuario->crearUsuario();
+    }
 
-        $this->usuarios[$usuario] = UsuarioModel::crearUsuario($usuario,$nombre, $password, $tipo);
-        return true;
+    public function getUsuario($correo)
+    {
+        $this->usuario->obtenerUsuarioPorCorreo($correo);
+        return $this->usuario;
     }
 
     public function usuarioExiste($usuario)
     {
-        return isset($this->usuarios[$usuario]);
+        return $this->usuario->obtenerUsuarioPorCorreo($usuario) != null;
     }
-
-    public function getUsuario($nombre)
-    {
-        
-        return isset($this->usuarios[$nombre]) ? $this->usuarios[$nombre] : null;
-    }
-
 }
+
+?>

@@ -63,3 +63,4 @@ class cita {
         return new self($fecha_cita, $hora_cita, $paciente_atend, $medico_encarg, $diagnostico, $estado, $fecha_prox, $comentario);
     }
 }
+?>
