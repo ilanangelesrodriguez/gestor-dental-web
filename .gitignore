@@ -1,3 +1,4 @@
 .vercel
 
 /vendor/
+app/loquesea.php
