@@ -5,7 +5,7 @@ namespace Model\cita;
 use Database\Conexion;
 use PDO;
 
-class Cita
+class CitaModel
 {
     public $fecha_cita;
     public $hora_cita;
@@ -13,23 +13,24 @@ class Cita
     public $medico_encarg;
     public $diagnostico;
     public $estado;
-    public $fecha_prox;
     public $comentario;
     public $pdo;
 
-    public function __construct($fecha_cita, $hora_cita, $paciente_atend, $medico_encarg, $diagnostico, $estado, $fecha_prox, $comentario)
+    public function __construct()
     {
-        $this->fecha_cita = $fecha_cita;
-        $this->hora_cita = $hora_cita;
-        $this->paciente_atend = $paciente_atend;
-        $this->medico_encarg = $medico_encarg;
-        $this->diagnostico = $diagnostico;
-        $this->estado = $estado;
-        $this->fecha_prox = $fecha_prox;
-        $this->comentario = $comentario;
+
         $this->pdo = (new Conexion())->conectar();
     }
+    public function setPaciente($paciente_atend)
+    {
+        $this->paciente_atend = $paciente_atend;
+    }
 
+    public function setDiagnostico($diagnostico)
+    {
+        $this->diagnostico = $diagnostico;
+    }
+    
     public function getFechaCita()
     {
         return $this->fecha_cita;
@@ -60,10 +61,6 @@ class Cita
         return $this->estado;
     }
 
-    public function getFechaProx()
-    {
-        return $this->fecha_prox;
-    }
 
     public function getComentario()
     {
@@ -75,7 +72,7 @@ class Cita
         $this->medico_encarg = $medico_encarg;
     }
 
-    public function validarEstado($estado)
+    public function setEstado($estado)
     {
         $estadosValidos = ["pendiente", "atendido", "completado"];
         if (in_array($estado, $estadosValidos)) {
@@ -84,6 +81,10 @@ class Cita
         } else {
             return false;
         }
+    }
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
     }
 
     public function isDiaDisponible($fecha)
@@ -147,7 +148,15 @@ class Cita
 
     public static function createCita($fecha_cita, $hora_cita, $paciente_atend, $medico_encarg, $diagnostico, $estado, $comentario)
     {
-        $cita = new self($fecha_cita, $hora_cita, $paciente_atend, $medico_encarg, $diagnostico, $estado, null, $comentario);
+        $cita = new self();
+        $cita->setFechaCita($fecha_cita);
+        $cita->setHoraCita($hora_cita);
+        $cita->setPaciente($paciente_atend);
+        $cita->setMedicoEncarg($medico_encarg);
+        $cita->setDiagnostico($diagnostico);
+        $cita->setEstado($estado);
+        $cita->setComentario($comentario);
+
 
         if ($cita->validarFechaCita($fecha_cita) && $cita->validarHoraCita($hora_cita)) {
             $stmt = $cita->pdo->prepare("INSERT INTO cita (fecha_cita, hora_cita, id_paciente, id_medico, diagnostico, id_estado_cita, comentario) VALUES (?, ?, ?, ?, ?, ?, ?)");
