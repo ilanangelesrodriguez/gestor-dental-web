@@ -1,10 +1,18 @@
 <?php
 
 namespace Controller;
+require_once __DIR__."/../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
 
-require_once __DIR__ .'/../Model/Login/UsuarioModel.php';
 
-require_once __DIR__ .'/../Model/Login/LoginModel.php';
+require_once __DIR__.'/../Model/Login/UsuarioModel.php';
+
+require_once __DIR__.'/../Model/Login/LoginModel.php';
+
+require_once __DIR__.'/../Model/Login/AuthMedico.php';
+require_once __DIR__.'/../Model/Login/AuthPaciente.php';
 
 use Model\Login\AuthMedico;
 use Model\Login\AuthPaciente;
@@ -17,6 +25,7 @@ class LoginController
 {
     public function mostrarFormulario()
     {
+     
         $loginView = new LoginView();
         
         $loginView->mostrarFormulario();
@@ -25,12 +34,14 @@ class LoginController
 
     public function procesarFormulario()
     {
+        session_start();
         
         
         if (isset($_POST['email']) && isset($_POST['password'])) {
             
             $usuario = $_POST['email'];
             $clave = $_POST['password'];
+
             
             
             $loginModel = new LoginModel();
@@ -53,12 +64,18 @@ class LoginController
 
                         $nombreUsuario = $usuarioExistente->getNombre();
                         $tipoUsuario = $usuarioExistente->getTipo();
+                        $_SESSION['user'] = $usuarioExistente->getNombre();
+                        $_SESSION['logged'] = true;
+                        $_SESSION['tipo'] = $tipoUsuario;
+
+
 
                         // Almacenar los datos en un enlace
-                        $enlace = "home.php?nombre=" . urlencode($nombreUsuario) . "&tipo=" . urlencode($tipoUsuario);
+                        $enlace = "home.php";
+                        
 
                         echo "<div class='login__message'>";
-                        echo "<div class='login__title'>Bienvenido {$usuarioExistente->getNombre()}<br><span>Dale click a continuar</span></div>";
+                        echo "<div class='login__title'>Bienvenido ".$_SESSION['user']."<br><span>Dale click a continuar</span></div>";
                         echo '<a href="'.$enlace.'"> <button class="login__button signout__button">Continuar</button> </a>';
                         echo '<button style="margin-top: 1em" class="login__button" onclick="volver()">← Volver</button>';
                         echo "</div>";
@@ -79,8 +96,14 @@ class LoginController
                 echo "<p class='login__p'>Introduce un nombre de usuario existente.</p>";
                 echo '<button style="margin:0;" class="login__button signout__button" onclick="volver()">Regresar</button>';
         }
+        
 
         }
     }
 }
+/* $prueba = new LoginController();
+$_POST['email'] = 'roxana.bernal@clinica.com';
+$_POST['password'] = 'contramedico';
+$prueba->procesarFormulario(); */
+
 ?>

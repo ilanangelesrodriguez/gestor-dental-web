@@ -1,7 +1,10 @@
 <?php
 
 namespace Model\Login;
-
+require_once __DIR__."/../../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
 require_once __DIR__ . '/UsuarioModel.php';
 use Model\Login\UsuarioModel;
 
@@ -57,10 +60,11 @@ class LoginModel
         return $this->usuarios;
     } */
 
-    public function registrarUsuario($nombre, $usuario, $password,$tipo)
+    public function registrarUsuario($nombre, $usuario,$apellidos, $password,$tipo)
     {
         $this->usuario->setIdUsuario($usuario);
         $this->usuario->setNombre($nombre);
+        $this->usuario->setApellido($apellidos);
         $this->usuario->setCorreo($usuario);
         $this->usuario->setContra($password);
         $this->usuario->crearUsuario($tipo);

@@ -1,3 +1,9 @@
+<?php 
+require_once './Handler.php';
+use Handler\Handler;
+$handler=new Handler();
+$handler->returnIndex();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -12,16 +18,14 @@
     <div class="cita div__cita">
         <div class="cita__div">
             <?php
-            use Controller\CitaController;
-            use View\CitaView;
+            
 
-            require_once '../app/Model/Cita/CitaModel.php';
-            require_once '../app/Controller/CitaController.php';
-            require_once '../app/View/CitaView.php';
+            require_once './../app/Controller/CitaController.php';
+            use Controller\CitaController;
 
             $citaController = new CitaController();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST) {
                 $citaController->procesarCita();
             } else {
                 $citaController->mostrarFormularioCita();
@@ -29,10 +33,9 @@
             ?>
         </div>
     </div>
-    <!-- Un bulce infinito me da el loader
         <div class="loader">
         <div class="loader__figure custom-loader"></div>
     </div>
-    -->
+    
 </body>
 </html>

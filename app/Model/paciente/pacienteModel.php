@@ -1,6 +1,11 @@
 <?php
 namespace Model\paciente;
-require("/app/Model/Login/UsuarioModel.php");
+require_once __DIR__."/../../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
+require_once("./../Login/UsuarioModel.php");
+use Model\Login\UsuarioModel;
 
 class PacienteModel extends UsuarioModel{
     public function __construc($username,$nombre,$clave,$direccion){

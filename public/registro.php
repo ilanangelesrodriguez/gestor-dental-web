@@ -30,6 +30,7 @@
              *
              * @author Ilan Nestor Angeles Rodriguez
              */
+            session_start();
             use Controller\RegistroController;
             use Model\Login\LoginModel;
             use View\RegistroView;

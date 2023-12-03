@@ -1,16 +1,23 @@
 <?php
-
 namespace Model\cita;
-
+require_once __DIR__."/../../../public/Handler.php";
+require_once __DIR__."/../../DataBase/conexion.php";
+require_once __DIR__."/../Login/UsuarioModel.php";
 use Database\Conexion;
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
+use Model\Login\UsuarioModel;
 use PDO;
 
 class CitaModel
 {
+    public $id_cita;
     public $fecha_cita;
     public $hora_cita;
     public $paciente_atend;
     public $medico_encarg;
+    public $fecha_prox;
     public $diagnostico;
     public $estado;
     public $comentario;
@@ -20,6 +27,32 @@ class CitaModel
     {
 
         $this->pdo = (new Conexion())->conectar();
+        
+    }
+    public function setIdCita(){
+        $totalCitas = $this->getTotalCitas();
+        $numero = $totalCitas + 1;
+        $string = str_pad($numero, 3, '0', STR_PAD_LEFT);
+        $this->id_cita = "C".$string;
+
+    }
+    public function setFechaProx($fecha_prox)
+    {
+        $this->fecha_prox = $fecha_prox;
+    }
+    public function getFechaProx()
+    {
+        return $this->fecha_prox;
+    }
+
+
+    public function getIdCita(){
+        return $this->id_cita;
+    }
+    public function getTotalCitas(){
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM cita");
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
     public function setPaciente($paciente_atend)
     {
@@ -67,14 +100,14 @@ class CitaModel
         return $this->comentario;
     }
 
-    public function setMedicoEncarg($medico_encarg)
+    public function setMedico($medico_encarg)
     {
         $this->medico_encarg = $medico_encarg;
     }
 
     public function setEstado($estado)
     {
-        $estadosValidos = ["pendiente", "atendido", "completado"];
+        $estadosValidos = ["A", "C", "P"];
         if (in_array($estado, $estadosValidos)) {
             $this->estado = $estado;
             return true;
@@ -89,17 +122,23 @@ class CitaModel
 
     public function isDiaDisponible($fecha)
     {
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM citas WHERE fecha_cita = :fecha_cita");
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM cita WHERE fecha_cita = :fecha_cita");
         $stmt->bindParam(":fecha_cita", $fecha);
         $stmt->execute();
         return $stmt->fetchColumn();
     }
 
-    public function isHoraDisponible($hora_cita)
+    public function isHoraDisponible($fecha_cita, $hora_cita)
     {
-        $hora = date("H", strtotime($hora_cita));
-        return !($hora < 3 || $hora > 12 || ($hora >= 8 && $hora < 9));
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM cita WHERE fecha_cita = :fecha_cita AND hora_cita = :hora_cita");
+        $stmt->bindParam(":fecha_cita", $fecha_cita);
+        $stmt->bindParam(":hora_cita", $hora_cita);
+        $stmt->execute();
+        $citasExisten = $stmt->fetchColumn();
+        return $citasExisten == 0;
     }
+    
+    
 
     public function setFechaCita($fecha_cita)
     {
@@ -129,8 +168,8 @@ class CitaModel
 
     private function validarHoraCita($hora_cita)
     {
-        $hora_actual = date("H:i:s");
-        return $hora_cita >= "09:00:00" && $hora_cita <= "17:00:00" && $hora_cita != "13:00:00" && $hora_cita >= $hora_actual;
+        
+        return $hora_cita >= "08:59:59" && $hora_cita <= "17:00:01" && $hora_cita != "13:00:00" ;
     }
 
     private function SQLQuery($sql, $params = [])
@@ -149,67 +188,121 @@ class CitaModel
     public static function createCita($fecha_cita, $hora_cita, $paciente_atend, $medico_encarg, $diagnostico, $estado, $comentario)
     {
         $cita = new self();
+        
+        $medicoModel = new UsuarioModel($cita->pdo);
+        $pacienteModel = new UsuarioModel($cita->pdo);
+        $cita->setIdCita();
         $cita->setFechaCita($fecha_cita);
         $cita->setHoraCita($hora_cita);
-        $cita->setPaciente($paciente_atend);
-        $cita->setMedicoEncarg($medico_encarg);
         $cita->setDiagnostico($diagnostico);
         $cita->setEstado($estado);
         $cita->setComentario($comentario);
+        echo $paciente_atend;
+        echo $medico_encarg;
 
+        ($cita->setPaciente($pacienteModel->obtenerUsuarioPorID($paciente_atend)));
+        ($cita->setMedico($medicoModel->obtenerUsuarioPorID($medico_encarg)));
 
-        if ($cita->validarFechaCita($fecha_cita) && $cita->validarHoraCita($hora_cita)) {
-            $stmt = $cita->pdo->prepare("INSERT INTO cita (fecha_cita, hora_cita, id_paciente, id_medico, diagnostico, id_estado_cita, comentario) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-            $id_paciente = $cita->getPacienteAtend();
-            $id_medico = $cita->getMedicoEncarg();
-            $id_estado_cita = $cita->getEstado();
-
-            $stmt->execute([$fecha_cita, $hora_cita, $id_paciente, $id_medico, $diagnostico, $id_estado_cita, $comentario]);
-
-            return true;
-        } else {
+        try {
+            if ($cita->validarFechaCita($fecha_cita) && $cita->validarHoraCita($hora_cita)) {
+                
+                $stmt = $cita->pdo->prepare("INSERT INTO cita (id_cita,fecha_cita, hora_cita, id_paciente, id_medico, diagnostico, id_estado_cita, comentario) VALUES (?,?, ?, ?, ?, ?, ?, ?)");
+                $id_paciente = $cita->getPacienteAtend();
+                $id_medico = $cita->getMedicoEncarg();
+                $stmt->execute([$cita->getIdCita(),$fecha_cita, $hora_cita, $id_paciente, $id_medico, $diagnostico, $estado, $comentario]);
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
             return false;
         }
+
     }
 
     public function getCitasDisponibles($startDate, $endDate)
     {
         $startDate = date("Y-m-d", strtotime($startDate));
         $endDate = date("Y-m-d", strtotime($endDate));
-
-        $sql = "SELECT fecha_cita FROM citas WHERE fecha_cita BETWEEN :start_date AND :end_date AND WEEKDAY(fecha_cita) NOT IN (5, 6) GROUP BY fecha_cita";
+    
+        // Obtener todas las fechas en el rango especificado
+        $fechasEnRango = new \DatePeriod(
+            new \DateTime($startDate),
+            new \DateInterval('P1D'),
+            new \DateTime($endDate . ' + 1 day')
+        );
+    
+        // Obtener las fechas ya reservadas
+        $sql = "
+            SELECT DISTINCT fecha_cita
+            FROM cita
+            WHERE fecha_cita BETWEEN :start_date AND :end_date
+        ";
         $params = [":start_date" => $startDate, ":end_date" => $endDate];
-        return $this->SQLSentence($sql, $params);
+        $fechasReservadas = $this->SQLSentence($sql, $params);
+    
+        // Filtrar las fechas disponibles
+        $fechasDisponibles = [];
+        foreach ($fechasEnRango as $fecha) {
+            $fechaStr = $fecha->format("Y-m-d");
+            if (!in_array($fechaStr, $fechasReservadas)) {
+                $fechasDisponibles[] = $fechaStr;
+            }
+        }
+    
+        return $fechasDisponibles;
     }
+    
+    
 
     public function getHorariosDisponibles($fecha_cita)
     {
         $fecha_cita = date("Y-m-d", strtotime($fecha_cita));
-
-        $sql = "SELECT hora_cita FROM citas WHERE fecha_cita = :fecha_cita AND HOUR(hora_cita) >= 3 AND HOUR(hora_cita) < 12 AND HOUR(hora_cita) != 8";
+    
+        // Obtener todos los horarios posibles entre 9am y 5pm
+        $horariosPosibles = [];
+        $horaInicio = new \DateTime($fecha_cita . ' 09:00:00');
+        $horaFin = new \DateTime($fecha_cita . ' 18:00:00');
+        $intervalo = new \DateInterval('PT1H'); // Intervalo de 1 hora
+        $periodo = new \DatePeriod($horaInicio, $intervalo, $horaFin);
+    
+        foreach ($periodo as $hora) {
+            $horariosPosibles[] = $hora->format('H:i:s');
+        }
+    
+        $sql = "SELECT hora_cita FROM cita WHERE fecha_cita = :fecha_cita";
         $params = [":fecha_cita" => $fecha_cita];
-        return $this->SQLSentence($sql, $params);
+        $horariosReservados = $this->SQLSentence($sql, $params);
+        array_push($horariosReservados, "13:00:00");
+    
+        $horariosDisponibles = array_diff($horariosPosibles, $horariosReservados);
+    
+        return $horariosDisponibles;
     }
-
+    
     public function consultarCita($fecha_cita, $hora_cita)
     {
         $sql = "SELECT * FROM cita WHERE fecha_cita=? AND hora_cita=?";
         $params = [$fecha_cita, $hora_cita];
         $stmt = $this->SQLQuery($sql, $params);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        
+        echo "\n";
         if ($result) {
-            return new self(
-                $result['fecha_cita'],
-                $result['hora_cita'],
-                $result['id_paciente'],
-                $result['id_medico'],
-                $result['diagnostico'],
-                $result['id_estado_cita'],
-                $result['fecha_prox'],
-                $result['comentario']
-            );
+             $cita=new self();
+                $cita = new self();
+                $cita->setIdCita();
+
+                $cita->setHoraCita($result['hora_cita']);
+                $cita->setPaciente($result['id_paciente']);
+                $cita->setMedico($result['id_medico']);
+                $cita->setDiagnostico($result['diagnostico']);
+                $cita->setEstado($result['id_estado_cita']);
+                $cita->setComentario($result['comentario']);
+
+                return $cita;
+            
+            return $cita;
         } else {
             return null;
         }
@@ -220,8 +313,9 @@ class CitaModel
         $citaExistente = $this->consultarCita($fecha_cita, $hora_cita);
 
         if ($citaExistente) {
+            
             $nuevasFechasDisponibles = $this->isDiaDisponible($nueva_fecha);
-            $nuevasHorasDisponibles = $this->isHoraDisponible($nueva_hora);
+            $nuevasHorasDisponibles = $this->isHoraDisponible($nueva_fecha,$nueva_hora);
 
             if ($nuevasFechasDisponibles && $nuevasHorasDisponibles) {
                 $stmt = $this->pdo->prepare("UPDATE cita SET fecha_cita=?, hora_cita=?, id_estado_cita=?, diagnostico=?, comentario=? WHERE fecha_cita=? AND hora_cita=?");
@@ -272,3 +366,7 @@ class CitaModel
         return $citas;
     }
 }
+/* $prueba = new CitaModel();
+
+var_dump($prueba->modificarCita("2023-11-12", "15:00:00", "2023-12-12", "10:00:00", "A", "prueba", "prueba")); */
+?>

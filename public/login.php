@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once './Handler.php';
+use Handler\Handler;
+$handler=new Handler();
+$handler->returnHome();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -29,7 +36,7 @@
              *
              * @author Ilan Nestor Angeles Rodriguez, Sohell Alessandro Avalos Chong, Joseph Dueñas Blas, Ronald Hurtado Ramos
              */
-
+            
             use View\LoginView;
 
             require_once '../app/Model/Login/UsuarioModel.php';

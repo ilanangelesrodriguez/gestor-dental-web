@@ -1,7 +1,10 @@
 <?php
 
 namespace Controller;
-
+require_once __DIR__."/../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
 require_once __DIR__ .'/../Model/Login/LoginModel.php';
 
 use Model\Login\LoginModel;
@@ -21,6 +24,7 @@ class RegistroController
             $nombre = $_POST['nombre'];
             $apellidos = $_POST['apellidos'];
             $usuario = $_POST['usuario'];
+            $apellidos= $_POST['apellidos'];
             $correo = $_POST['correo'];
             $clave = $_POST['password'];
             $confirmarClave = $_POST['confirm_password'];
@@ -39,7 +43,7 @@ class RegistroController
                 echo '<button style="margin:0;" class="login__button signout__button" onclick="volver()">Regresar</button>';
 
             } else {
-                $loginModel->registrarUsuario($nombre, $correo, $clave,"medico");
+                $loginModel->registrarUsuario($nombre, $correo,$apellidos, $clave,"paciente");
                 echo "<div class=login__title-ok>El usuario ha sido creado<br><span>Por favor, elige un nombre de usuario diferente.</span></div>";
                 echo "<p class='login__p'>Registro exitoso. Ahora puedes iniciar sesión.</p>";
                 echo '<button style="margin:0;" class="login__button signout__button">Continuar</button>';

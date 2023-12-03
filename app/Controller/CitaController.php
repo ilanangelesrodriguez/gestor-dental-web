@@ -1,10 +1,15 @@
 <?php
-
 namespace Controller;
+require_once __DIR__.'/../../public/Handler.php';
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
 
+require_once __DIR__.'/../Model/cita/CitaModel.php';
+require_once __DIR__.'/../View/CitaView.php';
 use Model\cita\CitaModel;
 use View\CitaView;
-require_once '../app/Model/cita/CitaModel.php';
+
 
 class CitaController
 {
@@ -23,7 +28,6 @@ class CitaController
         $medicoEncarg = $_POST['medico_encarg'];
         $diagnostico = $_POST['diagnostico'];
         $estado = $_POST['estado'];
-        $fechaProx = $_POST['fecha_prox'];
         $comentario = $_POST['comentario'];
 
         $citaModel = new CitaModel();

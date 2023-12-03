@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__."/../../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

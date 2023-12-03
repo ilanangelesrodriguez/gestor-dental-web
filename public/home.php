@@ -1,9 +1,14 @@
 <?php
-
-if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
-    $nombreUsuario = $_GET['nombre'];
-    $tipoUsuario = $_GET['tipo'];
-
+session_start();
+require_once './Handler.php';
+use Handler\Handler;
+$handler = new Handler();
+$handler->returnIndex();
+$nombreUsuario = ""; 
+$tipoUsuario = "";
+if (isset($_SESSION['user']) && isset($_SESSION['tipo'])) {
+    $nombreUsuario = $_SESSION['user'];
+    $tipoUsuario = $_SESSION['tipo'];
 }
 
 ?>
@@ -152,7 +157,7 @@ if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
                 <path d="M13 2.5a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm0 10a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1Zm-9-10a1 1 0 0 1 1 1v14a1 1 0 1 1-2 0v-14a1 1 0 0 1 1-1Z"/>
             </g>
         </svg>
-        <a href="login.php">Salir</a>
+        <a href="logout.php">Salir</a>
     </div>
 
 </div>
@@ -160,17 +165,6 @@ if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
 
 <div class="header__div-greet">
 
-    <?php
-
-    if (isset($_GET['nombre']) && isset($_GET['tipo'])) {
-        $nombreUsuario = $_GET['nombre'];
-        $tipoUsuario = $_GET['tipo'];
-
-    }
-
-
-
-    ?>
 
     <div class="header__greet"><p id="saludo"></p> <p>, <?php echo $nombreUsuario?></p></div>
 

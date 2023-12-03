@@ -1,13 +1,16 @@
 <?php
 namespace Model\Login;
+require_once __DIR__."/../../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
+$handler->noAccess();
 use PDO;
 use PDOException;
-
-
 
 class UsuarioModel {
     private $id_usuario;
     private $nombres;
+    private $apellidos;
     private $correo;
     private $contra;
     private $pdo;
@@ -56,6 +59,12 @@ class UsuarioModel {
 
     public function setNombre($nombres) {
         $this->nombres = $nombres;
+    }
+    public function getApellido() {
+        return $this->apellidos;
+    }
+    public function setApellido($apellidos) {
+        $this->apellidos = $apellidos;
     }
 
     public function getCorreo() {
@@ -108,12 +117,34 @@ class UsuarioModel {
         if ($usuario) {
             $this->id_usuario = $usuario['id_usuario'];
             $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
             $this->correo = $usuario['correo'];
             $this->contra = $usuario['contra'];
             return $this;
         }
         return null;
     }
+    public function obtenerUsuarioPorID($id) {
+
+        $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE id_usuario LIKE ?");
+        $stmt->execute([$id]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        
+
+        if ($usuario) {
+            $this->id_usuario = $usuario['id_usuario'];
+            $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
+            $this->correo = $usuario['correo'];
+            $this->contra = $usuario['contra'];
+            $this->tipo= $this->getTipo();
+            
+            return $this;
+        }
+        return null;
+    }
+    
 
     public function actualizarUsuario() {
         $stmt = $this->pdo->prepare("SELECT * FROM usuario WHERE correo = ?");
@@ -121,8 +152,8 @@ class UsuarioModel {
         $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($existingUser) {
-            $stmt = $this->pdo->prepare("UPDATE usuario SET nombres = ?, correo = ?, contra = ? WHERE id_usuario = ?");
-            $stmt->execute([$this->nombres, $this->correo, $this->contra, $this->id_usuario]);
+            $stmt = $this->pdo->prepare("UPDATE usuario SET nombres = ?,apellidos = ?, correo = ?, contra = ? WHERE id_usuario = ?");
+            $stmt->execute([$this->nombres,$this->apellidos, $this->correo, $this->contra, $this->id_usuario]);
             echo "El usuario con correo $this->correo ha sido actualizado.<br>";
             echo '<button class="home__form-button" id="quitarQueryBtn">Volver</button>';
 
@@ -139,11 +170,10 @@ class UsuarioModel {
         $existingUser = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$existingUser) {
-            $stmt = $this->pdo->prepare("INSERT INTO usuario (id_usuario, nombres, correo, contra) VALUES (?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO usuario (id_usuario, nombres,apellidos, correo, contra) VALUES (?, ?,?, ?, ?)");
             $this->setIdUsuario($tipo);
-            $stmt->execute([$this->id_usuario, $this->nombres, $this->correo, $this->contra]);
+            $stmt->execute([$this->id_usuario, $this->nombres, $this->apellidos,$this->correo, $this->contra]);
             echo "El usuario con correo $this->correo ha sido creado.<br>";
-            echo '<button class="home__form-button" id="quitarQueryBtn">Volver</button>';
 
         } else {
             echo "El usuario con correo $this->correo ya existe.<br>";

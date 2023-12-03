@@ -1,7 +1,11 @@
 <?php
 
 namespace View;
+require_once __DIR__."/../../public/Handler.php";
+use Handler\Handler;
+$handler=new Handler();
 
+$handler->noAccess();
 class CitaView
 {
     public function mostrarFormularioCita()
@@ -16,7 +20,6 @@ class CitaView
                     <input required class="input" name="medico_encarg" placeholder="Nombre del Médico" type="text">
                     <input required class="input" name="diagnostico" placeholder="Diagnóstico del Médico" type="text">
                     <input required class="input" name="estado" placeholder="Estado de la cita" type="text">
-                    <input required class="input" name="fecha_prox" placeholder="Fecha Próxima Cita" type="date">
                     <input required class="input" name="comentario" placeholder="Comentario adicional del paciente" type="text">
                     <button type="submit" class="cita__button">Programar Cita</button>
                 </form>
