@@ -360,7 +360,7 @@ return [
                 // ],
             ],
         ],
-        [
+ /*       [
             'text'    => 'INVENTARIO',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -395,7 +395,7 @@ return [
                     'can' => 'admin.purchase.index'
                 ],
             ],
-        ],
+        ], */
         [
             'text'    => 'DOCTORES',
             'icon'    => 'fas fa-fw fa-share',
