@@ -1,0 +1,206 @@
+@import url(./main.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+nav{
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 200px;
+}
+nav .menuToggle {
+    font-size: 2rem;
+    color: var(--gray-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+nav .profile{
+    position: relative;
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+nav .profile .btn{
+    background-color: var(--color-secundario);
+    color: var(--white-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all .3s;
+}
+nav .profile .btn:hover{
+    opacity: .8;
+}
+nav .profile .btn-register{
+    background-color: transparent;
+    color: var(--gray-color);
+    outline: 2px solid var(--color-secundario);
+}
+nav .profile h3{
+    text-align: end;
+    font-weight: 500;
+    line-height: 1em;
+    color: var(--gray-color);
+}
+nav .profile h3 span{
+    font-size: .75em;
+    color: var(--gray-low-color);
+}
+nav .profile .imgBox{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+nav .profile .imgBox img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+nav .menu{
+    position: absolute;
+    top: calc(100% + 30px);
+    right: 11%;
+    width: 200px;
+    min-height: 100px;
+    background-color: var(--white-color);
+    box-shadow: var(--sombra-nav);
+    opacity: 0;
+    visibility: hidden;
+    transition-property: opacity, visibility;
+    transition-duration: .3s;
+}
+nav .menu::before{
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 35px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--white-color);
+    transform: rotate(45deg);
+}
+nav .menu.active{
+    opacity: 1;
+    visibility: visible;
+}
+nav .menu ul{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background-color: var(--white-color);
+}
+nav .menu ul li{
+    list-style: none;
+    padding: 15px 20px;
+    transition: .5s;
+}
+nav .menu ul li:hover{
+    background-color: var(--hover-nav-li);
+    transition: 0s;
+}
+nav .menu ul li a{
+    text-decoration: none;
+    color: var(--gray-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color .3s;
+}
+nav .menu ul li a:hover,
+nav .menu ul li a ion-icon:hover{
+    color: var(--color-secundario);
+}
+nav .menu ul li a ion-icon{
+    font-size: 1.25em;
+    color: #999;
+    transition: color .3s;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.nav.show{
+    left: 0;
+}
+.nav-logo{
+    display: block;
+    width: 70px;
+}
+.nav-logo img{
+    width: 100%;
+}
+.nav ul{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.nav ul li a{
+    display: block;
+    padding: 10px 8px;
+    color: var(--gray-color);
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+.nav ul li a:hover{
+    color: var(--color-secundario);
+}
+
+.toggle{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    transition: .2s;
+
+    background: linear-gradient(145deg, #e1e1e1, #fff);
+    box-shadow: var(--box-shadow-ball);
+}
+.toggle i{
+    width: 50%;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
+    z-index: 1;
+
+}
+.toggle .ball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: .3s ease-out;
+    background-color: var(--bg-color);
+}
+
+.toggle .bx-sun,
+.toggle .bx-moon{
+    color: var(--icon-color);
+}
+
+.check{
+    display: none;
+}

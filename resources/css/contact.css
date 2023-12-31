@@ -1,0 +1,148 @@
+@import url('./main.css');
+/* CONTACTO */
+/* INFORMACION */
+.contact-box {
+    background-color: var(--bg-contacto);
+}
+.contact-content .box {
+    padding: 25px 20px;
+}
+
+.contact-content .box-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+}
+
+.contact-content .box-info .phone,
+.contact-content .box-info .location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.box-info .phone i,
+.box-info .location i {
+    font-size: 3.5rem;
+    color: var(--color-secundario);
+}
+
+.box-info .phone h2,
+.box-info .location h2 {
+    color: var(--color-secundario);
+    text-align: center;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.box-info .phone h2::before,
+.box-info .location h2::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-secundario);
+    width: 40px;
+    height: 3px;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.box-info .phone .group-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.phone .group-links span {
+    color: var(--dark-color);
+}
+
+.phone .group-links span:active {
+    color: var(--color-primario);
+}
+
+.box-info .phone>a,
+.box-info .location p {
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+
+.box-info .location p {
+    text-align: center;
+    font-weight: 500;
+}
+/* FORMULARIO */
+.form .input-field{
+    display: flex;
+    flex-direction: column;
+    row-gap: .7rem;
+    margin-bottom: 1.2rem;
+}
+.form .input-field label{
+    color: #6D6D6D;
+    font-size: 12px;
+}
+.form .input-field input,
+.form .input-field select,
+.form .input-field textarea{
+    outline: none;
+    border: 1px solid #6D6D6D;
+    padding: 15px;
+    font-family: inherit;
+    font-size: inherit;
+}
+.form .input-field input:focus,
+.form .input-field select:focus,
+.form .input-field textarea:focus{
+    border-color: var(--color-secundario);
+}
+.form .input-field input{
+    font-family: inherit;
+    font-size: inherit;
+}
+.form .input-field textarea{
+    resize: vertical;
+}
+.form .checkbox-test{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.form .checkbox-test .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+.checkbox-test .checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: var(--color-secundario);
+}
+.checkbox-test .text{
+    font-size: 14px;
+    color: var(--dark-color);
+}
+.checkbox-test a.text{
+    color: var(--color-secundario);
+}
+.checkbox-test a.text:active{
+    text-decoration: underline;
+}
+.form .button{
+    text-align: center;
+    margin-top: 25px;
+}
+.form .button input{
+    background-color: var(--color-secundario);
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 1.1rem;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+.form .button input:active{
+    background-color: var(--dark-color);
+}

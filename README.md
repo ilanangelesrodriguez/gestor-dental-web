@@ -1,129 +1,66 @@
-# gestor-dental-web
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Este sistema web ofrece una solución para la administración de clínicas y consultorios médicos. Proporciona herramientas para facilitar la gestión de citas, historiales médicos, facturación y el seguimiento del pacientes. Este proyecto sigue la metodología Gitflow para organizar y gestionar sus ramas en Git.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Estructura de Carpetas
+## About Laravel
 
-- **📂 app:** Contiene la lógica de la aplicación.
-  - **📁 Controllers:** Controladores que manejan las solicitudes del usuario.
-  - **📁 Models:** Modelos que representan la lógica de negocios y manejan la interacción con la base de datos.
-  - **📁 Views:** Vistas o plantillas que se mostrarán al usuario.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- **📂 public:** Contiene archivos públicos accesibles desde el navegador.
-  - **📁 css:** Estilos CSS para el diseño de la interfaz.
-  - **📁 js:** Archivos JavaScript para la interactividad del cliente.
-  - **📁 img:** Carpeta para imágenes y otros recursos multimedia.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- **📂 config:** Archivos de configuración, como conexiones a la base de datos o configuraciones globales.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-- **📂 vendor:** Dependencias externas gestionadas por Composer (si estás utilizando Composer para la gestión de paquetes).
+## Learning Laravel
 
-- **📂 templates:** Plantillas reutilizables que pueden ser utilizadas en diferentes partes de la aplicación.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- **📂 database:** Scripts de creación de base de datos o migraciones.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-## Instalación
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-1. Clona este repositorio:
+## Laravel Sponsors
 
-    ```bash
-    git clone https://github.com/ilanangelesrodriguez/gestor-dental-web.git
-    ```
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-2. Navega al directorio del proyecto:
+### Premium Partners
 
-    ```bash
-    cd gestor-dental-web
-    ```
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-3. Configura el archivo de entorno (si es necesario).
+## Contributing
 
-4. Configura tu servidor web (Apache, Nginx, etc.) para apuntar al directorio `public` como el documento raíz.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Metodología Gitflow
+## Code of Conduct
 
-1. **Rama Principal (`main`)**
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-    La rama `main` es la rama principal y se considera la versión estable de la aplicación en producción.
+## Security Vulnerabilities
 
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-2. **Rama de Desarrollo (`develop`)**
+## License
 
-    La rama `develop` es la rama de desarrollo principal. Las nuevas características y mejoras se desarrollan en ramas separadas y se fusionan en `develop` una vez completadas y probadas.
-
-
-3. **Ramas de Funcionalidad (`feature/`)**
-
-    Las ramas de funcionalidad se utilizan para desarrollar nuevas características. Cada nueva característica se trabaja en su propia rama y se fusiona en `develop` al completarse.
-
-    ```bash
-    git checkout develop
-    git pull origin develop
-    git checkout -b feature/nueva-caracteristica
-    # Desarrollo de la nueva característica
-    git add .
-    git commit -m "Implementar nueva característica"
-    git push origin feature/nueva-caracteristica
-    ```
-
-4. **Ramas de Hotfix (`hotfix/`)**
-
-    Las ramas de hotfix se utilizan para corregir problemas críticos en producción. Se crean a partir de `main`, se corrigen y se fusionan nuevamente en `main` y `develop`.
-
-    ```bash
-    git checkout main
-    git pull origin main
-    git checkout -b hotfix/1.0.1
-    # Corrección del problema crítico
-    git add .
-    git commit -m "Corregir problema crítico"
-    git push origin hotfix/1.0.1
-    ```
-
-## Historial de Cambios
-
-Todas las versiones del proyecto se registran aquí con sus cambios asociados.
-
-1. **Formato de Mensajes de Commit**
-
-    - **feat:** Nueva característica para el usuario
-    - **fix:** Solución de un problema para el usuario
-    - **chore:** Cambios internos que no afectan al usuario
-    - **docs:** Cambios en la documentación
-    - **style:** Cambios en el formato del código (sin cambios en la lógica)
-    - **refactor:** Modificaciones en el código que no solucionan un problema ni añaden una característica
-    - **test:** Adición o modificación de pruebas
-    
-2. **Ejemplos de Commits**
-
-    - `feat: Agregar función de registro de usuarios`
-    - `fix: Corregir error en la validación de correo electrónico`
-    - `chore: Optimizar manejo de archivos`
-    - `docs: Actualizar README con instrucciones detalladas de instalación`
-    - `style: Aplicar formato consistente a los archivos CSS`
-    - `refactor: Simplificar la lógica de procesamiento de archivos`
-    - `test: Agregar casos de prueba para la funcionalidad de búsqueda`
-
-## Contribución
-
-Indica cómo los demás pueden contribuir a tu proyecto. Esto podría incluir pautas para solicitudes de extracción (pull requests) y problemas (issues).
-
-## Tecnologías Utilizadas
-
-- PHP
-- JavaScript (si es aplicable)
-- CSS
-
----
-
-## Equipo de Desarrollo
-
-1. Angeles Rodriguez, Ilan Néstor
-2. Avalos Chong, Sohell Diego Alessandro
-3. Dueñas Blas, Joseph Ali
-4. Hurtado Ramos, Ronald Fabrizio
-
-## Licencia
-
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
-
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
