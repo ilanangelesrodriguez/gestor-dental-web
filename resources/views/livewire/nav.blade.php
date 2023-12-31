@@ -89,13 +89,13 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
 
-                            {{-- BOTON PARA IR AL PERIFL DEL USUARIO --}}
+                            {{-- BOTON PARA IR AL PERFIL DEL USUARIO --}}
                             <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700"
                                 role="menuitem" tabindex="-1" id="user-menu-item-0">Tu Perfil</a>
 
                             {{-- este boton solo se muestra a los que tienen permiso para ir al dashboard --}}
                             @can('admin.home')
-                                {{-- BOTON PARA IR AL PERIFL DEL DASHBOARD --}}
+                                {{-- BOTON PARA IR AL PERFIL DEL DASHBOARD --}}
                                 <a href="{{ route('admin.home') }}" class="block px-4 py-2 text-sm text-gray-700"
                                     role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                             @endcan
