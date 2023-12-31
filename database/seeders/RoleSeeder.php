@@ -18,6 +18,8 @@ class RoleSeeder extends Seeder
         // CREANDO ROLES DE USUARIO
         $role1 = Role::create(['name' => 'Admin']);
         $role2 = Role::create(['name' => 'Doctor']);
+        $role3 = Role::create(['name' => 'Paciente']);
+        
         
         // CREANDO PERMISOS
         Permission::create(['name' => 'admin.home', 'description'=>'Ver el dashboard'])->syncRoles([$role1,$role2]); // admin y doctor podran ver el dashboard
