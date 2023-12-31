@@ -44,7 +44,7 @@
             <ul>
                 <li>
                     <a href="{{ route('profile.edit') }}">
-                        <ion-icon name="person-outline"></ion-icon>Perifl
+                        <ion-icon name="person-outline"></ion-icon>PERFIL
                     </a>
                 </li>
                 @can('admin.home')
